@@ -16,8 +16,8 @@
 10. 测试相互隔离的微服务
 11. 集成 `React-SSR-APP`
 12. 服务之间的代码共享和重用
-13. `CURD`服务封装
-14. 使用 `NATS Streaming Server`(一个事件总线实现)
+13. `CURD`服务抽象封装
+14. 使用 `NATS Streaming Server`(Brokered)
 15. `Node.js` 使用 `NATS`
 16. 管理 `NATS Client`
 17. 线上环境跨服务数据复制
