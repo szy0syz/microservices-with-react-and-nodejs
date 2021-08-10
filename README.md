@@ -36,13 +36,25 @@
 
 ### 01-微服务基础
 
+- 搞微服务之前，不得不先看看 `单体应用`
+
+![001](/images/001.png)
+![002](/images/002.png)
+![003](/images/003.png)
+
 - Each service gets its own databse (if it needs one)
 
 ![003](/images/ch01/003.png)
 
+- With microservices, we store and access data sort of strange way (果真有点奇怪 😂)
+
 - Services will never, ever reach into another services database
 
 ![004](/images/ch01/004.png)
+
+![004](/images/004.png)
+
+> 一直没想好怎么解释A服务调B服务的数据库的弊端，原来如此。
 
 #### Why Database-Per-Service
 
@@ -50,6 +62,20 @@
 - Database sechema/structure might change unexpectedly
 - Some services migth function more efficiently with different types of DB's (sql vs nosql)
   - 某些服务跑在不通类型的数据库上能有更高效的运行效率
+
+#### Quiz - Data in Microservices
+
+> 老哥出个题目都那么🐂
+
+- 👀 Creating one database per service seems like a waste! Why do we create one database per services?
+  - ✅
+  - ✅
+  - ✅
+
+- 👀 What is the #1 challenge in microservices?
+  - ✅ Managing data between different services
+  - ❌ Implementing monitoring and logging for services written in different languages
+  - ❌ Deploying two services at the same time
 
 #### 服务间通信
 
