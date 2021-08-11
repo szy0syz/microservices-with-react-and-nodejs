@@ -65,12 +65,12 @@
 
 #### Quiz - Data in Microservices
 
-> 老哥出个题目都那么🐂
+> 老哥出个题目都那么专业 🐂 🐃 🐄 🦏
 
 - 👀 Creating one database per service seems like a waste! Why do we create one database per services?
-  - ✅
-  - ✅
-  - ✅
+  - ✅ We want every service to be able to act independently whitout depending on any other service
+  - ✅ If each service has its own database, we can optimize what type of database we pick for a service
+  - ✅ A single databse shared between many services would be a single point of failure, which would limit the reliability of our app
 
 - 👀 What is the #1 challenge in microservices?
   - ✅ Managing data between different services
@@ -85,14 +85,20 @@
 
 举个例子：
 
-![008](/images/ch01/008.png)
+![005](/images/005.png)
 
 - 同步通信要点
-  - Conceptually easy to understand! (概念很简单啦)
-  - Service D won't need a databse! (服务器不需要数据库)
+  - Conceptually easy to understand! (概念很简单)
+  - Service D won't need a databse! (服务器不需要依赖数据库)
   - introduces a dependency between services (引入一个依赖在各服务之间！而不是A去调B、C，我以前真是这么干的)
-  - If any inter-service request fails, the overrall request fails
-  - The entire request is only as fast as the slowest request (一个完整的请求是否完成看最慢的哪一个子请求)
-  - Can easilty intoduce webs of requests (轻松接入各种web请求)
+  - If any inter-service request fails, the overall request fails (其中任何一个子服务出错，则整个业务链上的请求也出错)
+  - The entire request is only as fast as the slowest request (一个完整的请求是否完成得看最慢的哪一个子请求)
+  - Can easilty intoduce webs of requests (好处？轻松接入各种web请求)
+
+举个同步通信的例子 🌰
+
+![006](/images/006.png)
 
 ![010](/images/ch01/010.png)
+
+如上图所示，要是各个服务用同步通信，开发到后期真的如乱麻一把难缠了，快点祭出 “异步通信” 吧。
