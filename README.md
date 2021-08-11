@@ -102,3 +102,15 @@
 ![010](/images/ch01/010.png)
 
 如上图所示，要是各个服务用同步通信，开发到后期真的如乱麻一把难缠了，快点祭出 “异步通信” 吧。
+
+![007](/images/007.png)
+
+为每个服务配置独立数据库，并且用异步通信这也的设计模式看上去诡异又低消！
+
+![008](/images/008.png)
+
+- 异步通信要点
+  - 👍 Service D has zero dependencies on other services!
+  - 👍 Service D will be extremely fast!
+  - 👎 Data duplication - paying for extra storage + extra DB
+  - 👎 Harder to understand
