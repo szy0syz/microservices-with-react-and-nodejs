@@ -114,3 +114,11 @@
   - 👍 Service D will be extremely fast!
   - 👎 Data duplication - paying for extra storage + extra DB
   - 👎 Harder to understand
+
+### 02-mini-microservices-system
+
+- client
+- posts
+  - `yarn add express cors axios nodemon`
+- comments
+  - `yarn add express cors axios nodemon`
