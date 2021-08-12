@@ -122,3 +122,34 @@
   - `yarn add express cors axios nodemon`
 - comments
   - `yarn add express cors axios nodemon`
+
+![009](/images/009.png)
+
+> 在单体应用中，毕竟在一个数据库里的不同的表，很好解决！
+
+![010](/images/010.png)
+
+> 但在微服务中，怎么解决呢？
+
+![011](/images/011.png)
+
+同步方案：意思还是来个同步通信了。
+
+![012](/images/012.png)
+
+#### 异步方案
+
+- 👀 Wait, so you are saying we need to create a new service every time we need to join some data ?!?!?!
+  - Absolutely not! In reality, might not even have posts and comments in separate services in the first place
+
+#### Event Bus
+
+- Many different implementations. RabbitMQ, Kafka, NATS...
+- Receives events, publishes them to listeners
+- Many different subtle features that make async communication way easier or way harder
+  - 许多不同且微妙的功能可能会使得异步通信变得更容易或更难
+- We are going to build out own event bus using Express. It will not implement the vast majority of features a normal bus has.
+  - `mini` 阶段我们用 `Express` 建议模拟事件总线，后面再用正儿八经的
+  - 是的，模拟阶段使用 `Express` 假把意思的调度下而已
+  - 原来 Event Bus 是调度器的作用，如果换上消息队列就把同步调度转换成异步被动执行
+- Yes, for our next app we will use a production grade, open source event bus
