@@ -153,3 +153,31 @@
   - 是的，模拟阶段使用 `Express` 假把意思的调度下而已
   - 原来 Event Bus 是调度器的作用，如果换上消息队列就把同步调度转换成异步被动执行
 - Yes, for our next app we will use a production grade, open source event bus
+
+![012x](/images/012x.png)
+
+> 在 mini 系统里，所有服务都监听着 Event Bus 的消息，就是自己服务发生的一件事且是自己发出来的，也会收到 `总线` 的回馈。
+
+独立一个 Query-Service 出来有利有弊吧
+
+- 利：减少了数据库查询次数
+- 弊：增加事务、增加数据不一致的可能性，实时性要求较高的系统不合适
+- 这应该算是 CQRS 命令查询职责分离
+- 也可以是简单的资源合并
+
+![013x](/images/013x.png)
+
+新增功能：评论审核机制
+
+![014](/images/014.png)
+
+![015](/images/015.png)
+
+- The query service is about presentation logic
+- It is join ing two resources right now (posts and comments), but it might join 10!
+- Does it make sense for a presentation service to understand how to process a very precise update?
+- Query-Service 只和展示有关，数据跟新和他没关系，所说方案二不可行
+- 而且未来随着功能越来越多，代码会越来越冗余！它要处理的事件太多，其实我们只需要要 query-service 只关注一件事 `CommentUpdated` 即可
+
+
+![016](/images/016.png)
