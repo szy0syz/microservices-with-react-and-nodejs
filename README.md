@@ -247,3 +247,9 @@ Why k8s ?
 ![028](/images/028.png)
 
 > 都是些基操！
+
+![029](/images/029.png)
+
+![030](/images/030.png)
+
+![031](/images/031.png)
