@@ -253,3 +253,11 @@ Why k8s ?
 ![030](/images/030.png)
 
 ![031](/images/031.png)
+
+![032](/images/032.png)
+
+> `kubectl apply -f posts.yaml`
+
+![033](/images/033.png)
+
+![034](/images/034.png)
