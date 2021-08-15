@@ -222,3 +222,28 @@
 - 我 Comments Service 挂了，我查询照样可以
 
 > 🐂 🐄 🦏 🦬 🐃
+
+### 03-Running Services with Docker
+
+![024](/images/024.png)
+
+![025](/images/025.png)
+
+![026](/images/026.png)
+
+Why Docker ?
+
+- running our app right now makes big assumptions about out environment
+- running our app requires precise knowledge of how to start it (npm start)
+- Docker solves both these issues. Containers wrap up everything that is needed for a program + how to start run run it
+
+Why k8s ?
+
+- K8s is a tool for running a bunch of different containers
+- We give it some configuration to describe how we want our containers to rn and interact with each other
+
+![027](/images/027.png)
+
+![028](/images/028.png)
+
+> 都是些基操！
