@@ -298,3 +298,40 @@ spec:
 - 4.推送到镜像服务: `docker-hub`
 - 5. 重启 `deployment`，此时他会比较 image 的值，看有新的没，有就拉取重新部署
   - `kubectl rollout restart deployment [depl_name]`
+
+![037](/images/037.png)
+
+- `Cluster IP` 取个号输入的url让pord可以再k8s的集群内部被访问！
+- `Node Port` 让pod可以被“外网访问”
+- `Load Balancer` 这才是正确的让pod被访问的正确方式
+- `External Name` 取个别名 CNAME
+
+```yaml
+appVersion: v1
+kind: Service
+metadata:
+  name: posts-serv
+spec:
+  type: NodePort
+  selector:
+    app: posts
+  posts:
+    - name: posts
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
+```
+
+![038](/images/038.png)
+
+> 简直玩死人！macOS+docker的minikube 网络访问是个坑，玩了个一个半小时，换vm才可以！搞死！
+
+```bash
+$ minikube start --registry-mirror=https://registry.docker-cn.com --kubernetes-version=1.18.8 --driver=virtualbox
+
+$ minikube ip
+192.168.99.100
+
+$ minikube service posts-srv --url
+http://192.168.99.100:31557
+```

@@ -15,3 +15,5 @@ spec:
       containers:
         - name: posts
           image: registry.cn-shenzhen.aliyuncs.com/444/m-blog-posts:latest
+          ports:
+            - containerPort: 4000
