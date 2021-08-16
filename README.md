@@ -324,7 +324,7 @@ spec:
 
 ![038](/images/038.png)
 
-> 简直玩死人！macOS+docker的minikube 网络访问是个坑，玩了个一个半小时，换vm才可以！搞死！
+> 简直玩死人！macOS+docker的minikube 网络访问是个坑，玩了个一个半小时，换vm才可以！直接从23点坑到1点多，搞死！
 
 ```bash
 $ minikube start --registry-mirror=https://registry.docker-cn.com --kubernetes-version=1.18.8 --driver=virtualbox
