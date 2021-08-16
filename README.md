@@ -261,3 +261,40 @@ Why k8s ?
 ![033](/images/033.png)
 
 ![034](/images/034.png)
+
+![036](/images/036.png)
+
+方法一：修改配置文件里的版本号，更新`deployment`
+
+> 此方法不可行，远程服务器一多，改的配置文件也多，麻烦！
+
+![035](/images/035.png)
+
+方法二：使用`latest`标签更好，其步骤如下：
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: posts-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: posts
+  template:
+    metadata:
+      labels:
+        app: posts
+    spec:
+      containers:
+        - name: posts
+          image: registry.cn-shenzhen.aliyuncs.com/444/m-blog-posts:latest
+```
+
+- 1.在 `deployment` 描述时，容器的镜像一定要用 `latest` 标签
+- 2.修改代码
+- 3.制作新版本镜像
+- 4.推送到镜像服务: `docker-hub`
+- 5. 重启 `deployment`，此时他会比较 image 的值，看有新的没，有就拉取重新部署
+  - `kubectl rollout restart deployment [depl_name]`

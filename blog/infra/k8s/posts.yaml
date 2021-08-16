@@ -5,5 +5,5 @@ metadata:
 spec:
   containers:
     - name: posts
-      image: szy0syz/posts:0.0.1
+      image: registry.cn-shenzhen.aliyuncs.com/444/m-blog-posts
       imagePullPolicy: Never
