@@ -6,4 +6,3 @@ spec:
   containers:
     - name: posts
       image: registry.cn-shenzhen.aliyuncs.com/444/m-blog-posts
-      imagePullPolicy: Never

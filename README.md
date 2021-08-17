@@ -338,7 +338,7 @@ http://192.168.99.100:31557
 
 #### ClusterIP的正确用法
 
-![038](/images/039.png)
+![039](/images/039.png)
 
 Golas Moving Forward
 
@@ -349,3 +349,76 @@ Golas Moving Forward
 - Wire it all up!
 
 > 怎么看 `pod` 或 `depl` 的 `clusterIP` 呢？其实就是 `k get services` ，然后看 `name` 即可，这时我们就可以在 `Cluster` 里使用那么访问到这个 `pod`
+
+Adding More Services
+
+- For 'comments', 'query', 'moderation'...
+- Update the URL's in each to reach out to the 'event-bus-srv'
+- Build images + push them to docker hub
+- Create a depolyment + clusterIP service for each
+- Update the event-bus to once again send events to 'comments', 'query', 'moderation'
+
+> 那么久开始再造剩余服务，这三个服务器都依赖总线，改起来也灰常简单，真的有点感觉了。
+
+![040](/images/040.png)
+
+> 把剩余服务整完，启动 `query` 服务后发现，创建前的事务也 `同步`过来了，`Event Store` 、 `CQRS` 真心不错。
+
+```bash
+~/git/microservices-with-react-and-nodejs/blog/posts on  master! ⌚
+$ k describe pod query-depl-77b8cc9684-hqhbr
+Name:         query-depl-77b8cc9684-hqhbr
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.99.100
+Start Time:   Tue, 17 Aug 2021 15:38:45 +0800
+Labels:       app=query
+              pod-template-hash=77b8cc9684
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.7
+IPs:
+  IP:           172.17.0.7
+Controlled By:  ReplicaSet/query-depl-77b8cc9684
+Containers:
+  query:
+    Container ID:   docker://e41ea415d2e24bb9fe5ce3a470ef9b37cefb359d588d159a3510c99f7d191057
+    Image:          registry.cn-shenzhen.aliyuncs.com/444/m-blog-query:latest
+    Image ID:       docker-pullable://registry.cn-shenzhen.aliyuncs.com/444/m-blog-query@sha256:2a4cd605c80df6c4f487836a2831a7dcdce26b1a4b693e936e7298695a665058
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Tue, 17 Aug 2021 15:38:50 +0800
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-kt77w (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  default-token-kt77w:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-kt77w
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  7m52s  default-scheduler  Successfully assigned default/query-depl-77b8cc9684-hqhbr to minikube
+  Normal  Pulling    7m51s  kubelet            Pulling image "registry.cn-shenzhen.aliyuncs.com/444/m-blog-query:latest"
+  Normal  Pulled     7m47s  kubelet            Successfully pulled image "registry.cn-shenzhen.aliyuncs.com/444/m-blog-query:latest"
+  Normal  Created    7m47s  kubelet            Created container query
+  Normal  Started    7m47s  kubelet            Started container query
+```
+
+> 看下 `pod` 的健康状况
+>
+> 现在 docker 的 `cli` 命令也和 `k8s` 的靠拢了，以后进来改掉原来的 `docker-cli` 习惯
