@@ -422,3 +422,56 @@ Events:
 > 看下 `pod` 的健康状况
 >
 > 现在 docker 的 `cli` 命令也和 `k8s` 的靠拢了，以后进来改掉原来的 `docker-cli` 习惯
+
+#### 关于怎么导入流量
+
+![041](/images/041.png)
+
+方案一：此方案肯定不行。要管理多个NodePort的服务，况且它也扛不住，只能用来开发。对了而且这个端口多数情况是随机，也能手动固定。
+
+![042](/images/042.png)
+
+- Load Balancer Service：Tells k8s to reach out to its provider and provision a load balancer. Gets traffic in to a single pod
+- Ingress or Ingress Controller: A pod with a set of routing rules to distribute traffic to other services
+
+![043](/images/043.png)
+
+#### ingress
+
+> service时有说了暴露了service的三种方式ClusterIP、NodePort与LoadBalance，这几种方式都是在service的维度提供的，service的作用体现在两个方面，对集群内部，它不断跟踪pod的变化，更新endpoint中对应pod的对象，提供了ip不断变化的pod的服务发现机制，对集群外部，他类似负载均衡器，可以在集群内外部对pod进行访问。但是，单独用service暴露服务的方式，在实际生产环境中不太合适：
+>
+> 1.ClusterIP的方式只能在集群内部访问。
+> 2.NodePort方式的话，测试环境使用还行，当有几十上百的服务在集群中运行时，NodePort的端口管理是灾难。
+> 3.LoadBalance方式受限于云平台，且通常在云平台部署ELB还需要额外的费用。
+>
+> 所幸k8s还提供了一种集群维度暴露服务的方式，也就是ingress。ingress可以简单理解为service的service，他通过独立的ingress对象来制定请求转发的规则，把请求路由到一个或多个service中。这样就把服务与请求规则解耦了，可以从业务维度统一考虑业务的暴露，而不用为每个service单独考虑。
+>
+> 举个例子，现在集群有api、文件存储、前端3个service，可以通过一个ingress对象来实现图中的请求转发：
+
+![044](/images/044.png)
+
+`ingress` 规则是很灵活的，可以根据不同域名、不同 `path` 转发请求到不同的 `service` ，并且支持 `https`/`http。`
+
+[k8s ingress原理](https://segmentfault.com/a/1190000019908991)
+
+```yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-srv
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: posts.com
+      http:
+        paths:
+          - path: /posts
+            backend:
+              serviceName: posts-clusterip-srv
+              servicePort: 4000
+```
+
+- 这里有 `posts.com`，因为 `vm=VirtualBox` 所以在hosts修改 posts.com 到 `minikube ip`
+
+> 太屌了，炸裂了。
