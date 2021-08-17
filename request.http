@@ -3,8 +3,9 @@ POST http://192.168.99.100:30392/posts
 Content-Type: application/json
 
 {
-  "title": "4st posts"
+  "title": "002 posts"
 }
 
 ### fetch posts
 GET http://192.168.99.100:30392/posts
+
