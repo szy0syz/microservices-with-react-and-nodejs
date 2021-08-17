@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: event-bus
-          image: cygnetops/event-bus
+          image: registry.cn-shenzhen.aliyuncs.com/444/m-blog-event-bus
 ---
 apiVersion: v1
 kind: Service

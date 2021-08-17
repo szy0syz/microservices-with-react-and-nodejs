@@ -302,8 +302,8 @@ spec:
 ![037](/images/037.png)
 
 - `Cluster IP` 取个号输入的url让pord可以再k8s的集群内部被访问！
-- `Node Port` 让pod可以被“外网访问”
-- `Load Balancer` 这才是正确的让pod被访问的正确方式
+- `Node Port` 让pod可以被“外网访问”，但都是用于开发测试
+- `Load Balancer` 这才是正确的让pod被访问的正确方式，生产用
 - `External Name` 取个别名 CNAME
 
 ```yaml
@@ -335,3 +335,15 @@ $ minikube ip
 $ minikube service posts-srv --url
 http://192.168.99.100:31557
 ```
+
+#### ClusterIP的正确用法
+
+![038](/images/039.png)
+
+Golas Moving Forward
+
+- Build an `image` for the Event Bus
+- `Push` the image to Docker Hub
+- Create a `deployment` for Event Bus
+- Create a `Cluster IP service` for Event Bus and Posts
+- Wire it all up!
