@@ -1,0 +1,10 @@
+### create a post
+POST http://192.168.99.100:30392/posts
+Content-Type: application/json
+
+{
+  "title": "4st posts"
+}
+
+### fetch posts
+GET http://192.168.99.100:30392/posts

@@ -347,3 +347,5 @@ Golas Moving Forward
 - Create a `deployment` for Event Bus
 - Create a `Cluster IP service` for Event Bus and Posts
 - Wire it all up!
+
+> 怎么看 `pod` 或 `depl` 的 `clusterIP` 呢？其实就是 `k get services` ，然后看 `name` 即可，这时我们就可以在 `Cluster` 里使用那么访问到这个 `pod`

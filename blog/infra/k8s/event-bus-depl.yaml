@@ -19,10 +19,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: event-bus-srv
+  name: event-bus-clusterip-srv
 spec:
   selector:
     app: event-bus
+  type: ClusterIP
   ports:
     - name: event-bus
       protocol: TCP
