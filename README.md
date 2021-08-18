@@ -475,3 +475,43 @@ spec:
 - 这里有 `posts.com`，因为 `vm=VirtualBox` 所以在hosts修改 posts.com 到 `minikube ip`
 
 > 太屌了，炸裂了。
+
+#### Skaffold
+
+- Automates many tasks in a k8s dev environment
+- Makes it really easy to update code in a running pod
+- Makes it really easy to create/delete all object tied to a project at once
+- [skaffold.dev](https://skaffold.dev/)
+
+### 05-Architecture of Multi-Service Apps
+
+- the big challenge in microservices is data
+- different ways to share data between services. We are going to focus on async communication
+- async communication focuses on communication using events sent to an event bus
+- async communication encourages each service to be 100% self-sufficient. Relatively easy to handle temporary downtime or new service creation
+- Docker makes it easier to package up services
+- K8s is a pain to setup, but makes it really to deploy + scale service
+
+Painful Things from App #1
+
+- Lots of duplicated code!
+- Really hard to picture the flow of events between services
+- Really hard to remember what properites an event should have
+- Really hard to test some event flows
+- My machine is getting laggy running k8s and everything else...
+- What if someone created a comment after editing 5 others after edtiing a post while balancing on a tight rope...
+
+>
+
+- We are going to make some big changes to our development process for this next project
+- You might really dislike me for some of these decisions
+- I wouldn't do this if i didn't think it was absolutely, positively the right way to build microservices
+
+>
+
+- Build a central library as an NPM module to share code between our different projects
+- Precisely define all of our events in this shared library
+- Write every in Typescript
+- Write tests for as much as possible/reasonable
+- Run a k8s cluster in the cloud and develop on it almost as quickly as local
+- Introduce a lot of code to handle concurrency issues
