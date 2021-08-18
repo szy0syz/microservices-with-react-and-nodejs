@@ -4,28 +4,28 @@
 
 ## Menu
 
-01. 微服务基础
-02. 实现最小微服务系统
-03. 使用 `Docker` 运行服务
-04. 使用 `K8s` 编排服务
-05. 多服务应用程序的体系结构
-06. 利用云环境进行开发
-07. 统一响应规范策略
-08. 数据库管理与建模
-09. 鉴权策略和配置
-10. 测试相互隔离的微服务
-11. 集成 `React-SSR-APP`
-12. 服务之间的代码共享和重用
-13. `CURD`服务抽象封装
-14. 使用 `NATS Streaming Server`(Brokered)
-15. `Node.js` 使用 `NATS`
-16. 管理 `NATS Client`
-17. 线上环境跨服务数据复制
-18. 深入事件流
-19. 侦听事件和处理并发事务
+01. Fundamental Ideas Around Microservices
+02. A Mini-Microservices App
+03. Running Services with Docker
+04. Orchestrating Collections of Services with Kubernetes
+05. Architecture of Multi-Service Apps
+06. Leveraging a Cloud Environment for Development
+07. Response Normalization Strategies
+08. Database Management and Modeling
+09. Authentication Strategies and Options
+10. Testing Isolated Microservices
+11. Integrating a Server-Side-Rendered React App
+12. Code Sharing and Reuse Between Services
+13. Create-Read-Update-Destroy Server Setup
+14. NATS Streaming Server - An Event Bus Implementation
+15. Connecting to NATS in a Node JS World
+16. Managing a NATS Client
+17. Cross-Service Data Replication In Action
+18. Understanding Event Flow
+19. Listening for Events and Handling Concurrency Issues
 20. Worker Services
-21. 处理支付
-22. 前端开发
+21. Handling Payments
+22. Back to the Client
 23. CI/CD
 
 ## Notes
