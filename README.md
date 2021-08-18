@@ -434,7 +434,7 @@ Events:
 - Load Balancer Service：Tells k8s to reach out to its provider and provision a load balancer. Gets traffic in to a single pod
 - Ingress or Ingress Controller: A pod with a set of routing rules to distribute traffic to other services
 
-![043](/images/043.png)
+![045](/images/045.png)
 
 #### ingress
 
