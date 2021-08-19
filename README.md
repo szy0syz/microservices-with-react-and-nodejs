@@ -515,3 +515,7 @@ spec:
 - Should we do this for every microservices app?
 - Probably not? Depends on your use case, number of resources, business logic tied to each resource, etc
 - Perhaps 'feature-based' design would be better
+
+![049](images/049.png)
+
+![050](images/050.png)
