@@ -30,7 +30,7 @@
 
 ## Notes
 
-![nats1](/images/nats.jpg)
+![nats1](images/nats.jpg)
 
 ## Chapter
 
@@ -38,21 +38,21 @@
 
 - 搞微服务之前，不得不先看看 `单体应用`
 
-![001](/images/001.png)
-![002](/images/002.png)
-![003](/images/003.png)
+![001](images/001.png)
+![002](images/002.png)
+![003](images/003.png)
 
 - Each service gets its own databse (if it needs one)
 
-![003](/images/ch01/003.png)
+![003](images/ch01/003.png)
 
 - With microservices, we store and access data sort of strange way (果真有点奇怪 😂)
 
 - Services will never, ever reach into another services database
 
-![004](/images/ch01/004.png)
+![004](images/ch01/004.png)
 
-![004](/images/004.png)
+![004](images/004.png)
 
 > 一直没想好怎么解释A服务调B服务的数据库的弊端，原来如此。
 
@@ -79,13 +79,13 @@
 
 #### 服务间通信
 
-![008](/images/ch01/007.png)
+![008](images/ch01/007.png)
 
 - 同步通信
 
 举个例子：
 
-![005](/images/005.png)
+![005](images/005.png)
 
 - 同步通信要点
   - Conceptually easy to understand! (概念很简单)
@@ -97,17 +97,17 @@
 
 举个同步通信的例子 🌰
 
-![006](/images/006.png)
+![006](images/006.png)
 
-![010](/images/ch01/010.png)
+![010](images/ch01/010.png)
 
 如上图所示，要是各个服务用同步通信，开发到后期真的如乱麻一把难缠了，快点祭出 “异步通信” 吧。
 
-![007](/images/007.png)
+![007](images/007.png)
 
 为每个服务配置独立数据库，并且用异步通信这也的设计模式看上去诡异又低消！
 
-![008](/images/008.png)
+![008](images/008.png)
 
 - 异步通信要点
   - 👍 Service D has zero dependencies on other services!
@@ -123,19 +123,19 @@
 - comments
   - `yarn add express cors axios nodemon`
 
-![009](/images/009.png)
+![009](images/009.png)
 
 > 在单体应用中，毕竟在一个数据库里的不同的表，很好解决！
 
-![010](/images/010.png)
+![010](images/010.png)
 
 > 但在微服务中，怎么解决呢？
 
-![011](/images/011.png)
+![011](images/011.png)
 
 同步方案：意思还是来个同步通信了。
 
-![012](/images/012.png)
+![012](images/012.png)
 
 #### 异步方案
 
@@ -154,7 +154,7 @@
   - 原来 Event Bus 是调度器的作用，如果换上消息队列就把同步调度转换成异步被动执行
 - Yes, for our next app we will use a production grade, open source event bus
 
-![012x](/images/012x.png)
+![012x](images/012x.png)
 
 > 在 mini 系统里，所有服务都监听着 Event Bus 的消息，就是自己服务发生的一件事且是自己发出来的，也会收到 `总线` 的回馈。
 
@@ -165,13 +165,13 @@
 - 这应该算是 CQRS 命令查询职责分离
 - 也可以是简单的资源合并
 
-![013x](/images/013x.jpeg)
+![013x](images/013x.jpeg)
 
 新增功能：评论审核机制
 
-![014](/images/014.png)
+![014](images/014.png)
 
-![015](/images/015.png)
+![015](images/015.png)
 
 - The query service is about presentation logic
 - It is join ing two resources right now (posts and comments), but it might join 10!
@@ -179,15 +179,15 @@
 - Query-Service 只和展示有关，数据跟新和他没关系，所说方案二不可行
 - 而且未来随着功能越来越多，代码会越来越冗余！它要处理的事件太多，其实我们只需要要 query-service 只关注一件事 `CommentUpdated` 即可
 
-![016](/images/016.png)
+![016](images/016.png)
 
-![017](/images/017.png)
+![017](images/017.png)
 
 如何处理事件丢失的情况
 
-![018](/images/018.png)
+![018](images/018.png)
 
-![021](/images/021.png)
+![021](images/021.png)
 
 我们设想这么一个场景：如果 Query 或者 Moderation 服务失效，则 Comments 服务的数据是一定变了，但 Query 服务的数据没变，这就是数据不一致问题，也就是个事务的不完整性，那该怎么解决数据存储的不一致性问题呢？
 
@@ -197,17 +197,17 @@
   - 第三种：`“存储事件消息”`：目前比较合适的方案，这个方案的确是CQRS！
     - 老哥一直在给 NATS 作铺垫，原生自带解决方案嘛
 
-![019](/images/019.png)
+![019](images/019.png)
 
-![020](/images/020.png)
+![020](images/020.png)
 
-![022](/images/022.png)
+![022](images/022.png)
 
 - 让总线把错误的事件先存下来，等那个消费消息失败的服务重新上线了，再发送出来。
 - NATS 原生功能，而且还带序号的
 - 也不是只存储未消费的消息，而是全部都存储起来
 
-![023](/images/023.png)
+![023](images/023.png)
 
 弱弱地总结下我们 `mini-system` CQRS：
 
@@ -225,11 +225,11 @@
 
 ### 03-Running Services with Docker
 
-![024](/images/024.png)
+![024](images/024.png)
 
-![025](/images/025.png)
+![025](images/025.png)
 
-![026](/images/026.png)
+![026](images/026.png)
 
 Why Docker ?
 
@@ -242,33 +242,33 @@ Why k8s ?
 - K8s is a tool for running a bunch of different containers
 - We give it some configuration to describe how we want our containers to rn and interact with each other
 
-![027](/images/027.png)
+![027](images/027.png)
 
-![028](/images/028.png)
+![028](images/028.png)
 
 > 都是些基操！
 
-![029](/images/029.png)
+![029](images/029.png)
 
-![030](/images/030.png)
+![030](images/030.png)
 
-![031](/images/031.png)
+![031](images/031.png)
 
-![032](/images/032.png)
+![032](images/032.png)
 
 > `kubectl apply -f posts.yaml`
 
-![033](/images/033.png)
+![033](images/033.png)
 
-![034](/images/034.png)
+![034](images/034.png)
 
-![036](/images/036.png)
+![036](images/036.png)
 
 方法一：修改配置文件里的版本号，更新`deployment`
 
 > 此方法不可行，远程服务器一多，改的配置文件也多，麻烦！
 
-![035](/images/035.png)
+![035](images/035.png)
 
 方法二：使用`latest`标签更好，其步骤如下：
 
@@ -299,7 +299,7 @@ spec:
 - 5. 重启 `deployment`，此时他会比较 image 的值，看有新的没，有就拉取重新部署
   - `kubectl rollout restart deployment [depl_name]`
 
-![037](/images/037.png)
+![037](images/037.png)
 
 - `Cluster IP` 取个号输入的url让pord可以再k8s的集群内部被访问！
 - `Node Port` 让pod可以被“外网访问”，但都是用于开发测试
@@ -322,7 +322,7 @@ spec:
       targetPort: 4000
 ```
 
-![038](/images/038.png)
+![038](images/038.png)
 
 > 简直玩死人！macOS+docker的minikube 网络访问是个坑，玩了个一个半小时，换vm才可以！直接从23点坑到1点多，搞死！
 
@@ -338,7 +338,7 @@ http://192.168.99.100:31557
 
 #### ClusterIP的正确用法
 
-![039](/images/039.png)
+![039](images/039.png)
 
 Golas Moving Forward
 
@@ -360,7 +360,7 @@ Adding More Services
 
 > 那么久开始再造剩余服务，这三个服务器都依赖总线，改起来也灰常简单，真的有点感觉了。
 
-![040](/images/040.png)
+![040](images/040.png)
 
 > 把剩余服务整完，启动 `query` 服务后发现，创建前的事务也 `同步`过来了，`Event Store` 、 `CQRS` 真心不错。
 
@@ -425,16 +425,16 @@ Events:
 
 #### 关于怎么导入流量
 
-![041](/images/041.png)
+![041](images/041.png)
 
 方案一：此方案肯定不行。要管理多个NodePort的服务，况且它也扛不住，只能用来开发。对了而且这个端口多数情况是随机，也能手动固定。
 
-![042](/images/042.png)
+![042](images/042.png)
 
 - Load Balancer Service：Tells k8s to reach out to its provider and provision a load balancer. Gets traffic in to a single pod
 - Ingress or Ingress Controller: A pod with a set of routing rules to distribute traffic to other services
 
-![045](/images/045.png)
+![045](images/045.png)
 
 #### ingress
 
@@ -448,7 +448,7 @@ Events:
 >
 > 举个例子，现在集群有api、文件存储、前端3个service，可以通过一个ingress对象来实现图中的请求转发：
 
-![044](/images/044.png)
+![044](images/044.png)
 
 `ingress` 规则是很灵活的，可以根据不同域名、不同 `path` 转发请求到不同的 `service` ，并且支持 `https`/`http。`
 
@@ -492,26 +492,17 @@ spec:
 - Docker makes it easier to package up services
 - K8s is a pain to setup, but makes it really to deploy + scale service
 
-Painful Things from App #1
-
-- Lots of duplicated code!
-- Really hard to picture the flow of events between services
-- Really hard to remember what properites an event should have
-- Really hard to test some event flows
-- My machine is getting laggy running k8s and everything else...
-- What if someone created a comment after editing 5 others after edtiing a post while balancing on a tight rope...
-
->
+![046](images/046.png)
 
 - We are going to make some big changes to our development process for this next project
 - You might really dislike me for some of these decisions
 - I wouldn't do this if i didn't think it was absolutely, positively the right way to build microservices
 
->
+#### Ticketing App
 
-- Build a central library as an NPM module to share code between our different projects
-- Precisely define all of our events in this shared library
-- Write every in Typescript
-- Write tests for as much as possible/reasonable
-- Run a k8s cluster in the cloud and develop on it almost as quickly as local
-- Introduce a lot of code to handle concurrency issues
+- Users can list a ticket for an event (concert, sports) for sale
+- Other users can purchase this ticket
+- Any user can list tickets for sale and purchase tickets
+- When a user attempts to purchase a ticket, the ticket is 'locked' for 15 minutes. The user has 15 minutes to enter their payment info.
+- While locked, no other user can purchase the ticket. After 15 minutes, the ticket should 'unlock'
+- Ticket prices can be edited if they are not locked
