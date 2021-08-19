@@ -506,3 +506,12 @@ spec:
 - When a user attempts to purchase a ticket, the ticket is 'locked' for 15 minutes. The user has 15 minutes to enter their payment info.
 - While locked, no other user can purchase the ticket. After 15 minutes, the ticket should 'unlock'
 - Ticket prices can be edited if they are not locked
+
+![047](images/047.png)
+
+![048](images/048.png)
+
+- We are creating a separate service to manage each type of resource
+- Should we do this for every microservices app?
+- Probably not? Depends on your use case, number of resources, business logic tied to each resource, etc
+- Perhaps 'feature-based' design would be better
