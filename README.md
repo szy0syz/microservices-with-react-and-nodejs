@@ -617,3 +617,47 @@ We want an object like an 'Error', but we want to add in some more custom proper
 
 - 定义一个类，重写所有抽象类的字段
 - 构造函数定义默认的 message 字符串
+
+> k8s中部署 MongoDB 真有意思
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-mongo
+  template:
+    metadata:
+      labels:
+        app: auth-mongo
+    spec:
+      containers:
+        - name: auth-mongo
+          image: mongo:4.4-bionic
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-mongo-srv
+spec:
+  selector:
+    app: auth-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
+```
+
+![060](images/061.png)
+
+对了，接下来就是 `mongoose` + `js` 的诟病，无法知晓属性类型嘛，怎么利用 `TS` 呢？
+
+```js
+new User({ email: '123@123.com', password: '123123' })
+```
