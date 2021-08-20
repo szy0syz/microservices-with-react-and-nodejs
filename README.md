@@ -606,3 +606,9 @@ We want an object like an 'Error', but we want to add in some more custom proper
 ![057](images/057.png)
 
 > 不要在 error-middlaware 中处理业务，而是把业务放在具体的每个错误类里。
+
+我们在给全局 `Error` 再套一层壳子，这也所有我们具体业主的错误类就可以继承这个壳子，目前有两个选择：1.接口 和 2.抽象类
+
+![059](images/059.png)
+
+![060](images/060.png)
