@@ -561,3 +561,26 @@ spec:
 ```
 
 > `Service` 的默认 `type: ClusterIP`，可以不写！！！
+
+- 配置 `skaffold`
+
+```yaml
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: registry.cn-shenzhen.aliyuncs.com/444/ticketing-auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+```
