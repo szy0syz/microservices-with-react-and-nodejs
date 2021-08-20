@@ -661,3 +661,12 @@ spec:
 ```js
 new User({ email: '123@123.com', password: '123123' })
 ```
+
+![062](images/062.png)
+
+![063](images/063.png)
+
+> 我们的目标 -> `Creating the Model with TS`
+
+- Type checking User Properties
+- Adding Static Properties to a Model
