@@ -588,3 +588,21 @@ build:
 ![052](images/052.png)
 
 不能任由某一个服务个性化的错误格式返回，我们得统一错误返回的格式
+
+![053](images/053.png)
+
+如何统一错误对象？把所有已知场景全部列出来，然后分析共同需要达到的目的，最后给出结构即可。
+
+![054](images/054.png)
+
+![055](images/055.png)
+
+We want an object like an 'Error', but we want to add in some more custom properties to it
+
+> Usually a sign you want to subclass something!
+
+![056](images/056.png)
+
+![057](images/057.png)
+
+> 不要在 error-middlaware 中处理业务，而是把业务放在具体的每个错误类里。
