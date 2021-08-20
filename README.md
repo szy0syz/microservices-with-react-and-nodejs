@@ -612,3 +612,8 @@ We want an object like an 'Error', but we want to add in some more custom proper
 ![059](images/059.png)
 
 ![060](images/060.png)
+
+现在既然有了自定义错误类，那如何新增一个错误类呢？
+
+- 定义一个类，重写所有抽象类的字段
+- 构造函数定义默认的 message 字符串
