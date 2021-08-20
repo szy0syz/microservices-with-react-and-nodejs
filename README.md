@@ -519,3 +519,45 @@ spec:
 ![049](images/049.png)
 
 ![050](images/050.png)
+
+![051](images/051.png)
+
+- `docker build -t registry.cn-shenzhen.aliyuncs.com/444/ticketing-auth .`
+- `docker login`
+- `docker push registry.cn-shenzhen.aliyuncs.com/444/ticketing-auth`
+- `k8s-deploment`
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - name: auth
+          image: registry.cn-shenzhen.aliyuncs.com/444/ticketing-auth
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-srv
+spec:
+  selector:
+    app: auth
+  ports:
+    - name: auth
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+```
+
+> `Service` 的默认 `type: ClusterIP`，可以不写！！！
