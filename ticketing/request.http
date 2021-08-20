@@ -1,0 +1,8 @@
+### create a user
+POST https://ticketing.dev/api/users/signup
+Content-Type: application/json
+
+{
+  "email": "123@123.com",
+  "password": "123123"
+}
