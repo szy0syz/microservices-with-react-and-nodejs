@@ -695,3 +695,33 @@ export class Password {
   }
 }
 ```
+
+### 09-Authentication Strategies and Options
+
+![064](images/064.png)
+
+#### Fundamenttal Options 1
+
+![065](images/065.png)
+
+> Individual services rely on the auth service
+
+- 每个需要登录信息的服务都要依赖 `auth` -> ❌
+- 关键这个请求还是同步请求 -> ❌
+- 一旦 `auth` 挂了，整个与之相关的所有业务都停滞无法使用，`cluster` 挂彩 -> ❌
+
+#### Fundamenttal Options 1.1
+
+![066](images/066.png)
+
+#### Fundamenttal Options 2
+
+![067](images/067.png)
+
+![068](images/068.png)
+
+![070](images/070.png)
+
+![071](images/071.png)
+
+![072](images/072.png)
