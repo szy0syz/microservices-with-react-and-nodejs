@@ -727,3 +727,5 @@ export class Password {
 ![072](images/072.png)
 
 ![073](images/073.png)
+
+> 在 SSR 中解决首次渲染问题的方案就是，登录成功时不仅返回 jwt 还要设置 cookies
