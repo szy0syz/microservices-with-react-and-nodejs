@@ -735,3 +735,26 @@ export class Password {
 > 在 SSR 中解决首次渲染问题的方案就是，登录成功时不仅返回 jwt 还要设置 cookies
 >
 > 那么就可以在授权期内，使用cookie中不加密的jwt完成首次渲染没法获取登录信息的问题
+
+#### Securely Storing Secrets with Kubernetes
+
+![076](images/076.png)
+
+![077](images/077.png)
+
+> `kubectl create secret generic jwt-secret --from-literal=JWT_KEY=1234`
+
+```yaml
+spec:
+  containers:
+    - name: auth
+      image: registry.cn-shenzhen.aliyuncs.com/444/ticketing-auth
+      env:
+        - name: JWT_KEY
+          valueFrom:
+            secretKeyRef:
+              name: jwt-secret
+              key: JWT_KEY
+```
+
+> 这里的 `secretKeyRef-name` 写错会有提示！ -- `CreateContainerConfigError`。 而且 `pod` 状态都会异常

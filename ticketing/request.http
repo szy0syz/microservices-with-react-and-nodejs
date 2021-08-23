@@ -1,5 +1,5 @@
 ### create a user
-POST https://ticketing.dev/api/users/signup
+POST http://ticketing.dev/api/users/signup
 Content-Type: application/json
 
 {
