@@ -728,4 +728,10 @@ export class Password {
 
 ![073](images/073.png)
 
+![074](images/074.png)
+
+![075](images/075.png)
+
 > 在 SSR 中解决首次渲染问题的方案就是，登录成功时不仅返回 jwt 还要设置 cookies
+>
+> 那么就可以在授权期内，使用cookie中不加密的jwt完成首次渲染没法获取登录信息的问题
