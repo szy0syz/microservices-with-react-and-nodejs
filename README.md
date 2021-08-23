@@ -758,3 +758,24 @@ spec:
 ```
 
 > 这里的 `secretKeyRef-name` 写错会有提示！ -- `CreateContainerConfigError`。 而且 `pod` 状态都会异常
+
+![078](images/078.png)
+
+为了统一，我们必须将不同服务+数据库的返回格式JSON统一。
+
+那么就有一个问题，user 集合里的 password。
+
+```js
+{
+  toJSON: {
+    transform(doc, ret) {
+      ret.id = ret._id;
+      delete ret._id;
+      delete ret.password;
+      delete ret.__v;
+    },
+  },
+}
+```
+
+![079](images/079.png)
