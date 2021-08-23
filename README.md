@@ -779,3 +779,21 @@ spec:
 ```
 
 ![079](images/079.png)
+
+### 10 Testing Isolated Microservices
+
+![080](images/080.png)
+
+![081](images/081.png)
+
+![082](images/082.png)
+
+![083](images/083.png)
+
+![084](images/084.png)
+
+![085](images/085.png)
+
+![086](images/086.png)
+
+- `yarn add -D @types/jest @types/supertest jest ts-jest supertest mongodb-memory-server`
