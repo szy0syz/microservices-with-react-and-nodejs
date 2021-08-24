@@ -809,3 +809,5 @@ Why use Docker ?
 ![d001](images/docker/d001.png)
 
 ![d002](images/docker/d002.png)
+
+![d004](images/docker/d004.png)
