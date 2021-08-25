@@ -890,7 +890,7 @@ kube-dns
 - 哦豁，有个很像的 `service` `ingress-nginx-controller-admission`
 - 但老狗的没 80 端口肯定不对
 
-> **解决方案**
+> 🚀 🚀 🚀 🚀 **解决方案** 🚀 🚀 🚀 🚀
 
 - 首先: `kubectl expose deployment ingress-nginx-controller --target-port=80 --type=ClusterIP -n kube-system`
   - 没有开80和443的 `ingress-nginx-controller`，我手动加一个
