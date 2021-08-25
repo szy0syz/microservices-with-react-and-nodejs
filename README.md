@@ -822,8 +822,26 @@ module.exports = {
     return config;
   },
 };
-
 ```
+
+![089](images/089.png)
+
+#### 🔥 Fetching Data During SSR in Cluster
+
+> 重点来了
+
+```js
+// 注意这里不能这么用！
+LandingPage.getInitialProps = async context => {
+  // axios.get('/api/users') ...
+  // return data;
+};
+```
+
+- 以上代码存在一个问题，不区分服务端和客户端环境，服务端的请求地址和客户端的请求地址不一样
+  - 服务端用的是 `k8s` 里的 `clusterIP`
+  - 客户端用的是 `外网地址`
+  - 区别可大了 😂
 
 ----
 
