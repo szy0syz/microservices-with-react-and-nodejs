@@ -863,6 +863,8 @@ LandingPage.getInitialProps = async context => {
 - k8s 集群内部访问套路：**servicename.namespacename.svc.cluster.local**
 
 > 一个 `minikube` 参数搞了我4个小时，这个 `k8s` 简直玩死人。
+>
+> 这个集群内部或跨命名空间访问是如此重要，必须鼓着搞出来，要不然业务线会短啊！
 
 #### minikube ingress 启动但没服务或服务没80端口问题
 
