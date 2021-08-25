@@ -6,7 +6,7 @@ export default ({ req }) => {
 
     return axios.create({
       baseURL:
-        'http://default.ticketing-ingress.svc.cluster.local',
+        'http://ingress-nginx-controller.kube-system.svc.cluster.local',
       // baseURL:
       // 'http://auth-srv:3000',
       headers: req.headers,

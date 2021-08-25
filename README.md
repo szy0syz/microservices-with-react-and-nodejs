@@ -860,7 +860,7 @@ LandingPage.getInitialProps = async context => {
 > [重点] We access services using that 'http://auth-srv' style only wen they are in the same namespace
 
 - **开着 v2ray 全局模式** `k8s` 的 `ingress` 就失效
-- `ingress` 的 `apiVersion` 是 `networking.k8s.io/v1beta1`
+- k8s 集群内部访问套路：**servicename.namespacename.svc.cluster.local**
 
 ----
 
