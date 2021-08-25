@@ -8,10 +8,12 @@ const LandingPage = ({ currentUser }) => {
   );
 };
 
-LandingPage.getInitialProps = async context => {
+LandingPage.getInitialProps = async (context) => {
   console.log('LANDING PAGE!');
   const client = buildClient(context);
-  const { data } = await client.get('/api/users/currentuser');
+  const { data } = await client
+    .get('/api/users/currentuser')
+    .catch((err) => console.log('报错了', err));
 
   return data;
 };

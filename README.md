@@ -845,6 +845,22 @@ LandingPage.getInitialProps = async context => {
   - 区别可大了 😂
 - 所以呢，我们应该构建一个请求 `request`，让它知道自己是在服务端环境还是客服端环境 !!!
 
+![090](images/090.png)
+
+![091](images/091.png)
+
+![092](images/092.png)
+
+![093](images/093.png)
+
+![094](images/094.png)
+
+![095](images/095.png)
+
+> [重点] We access services using that 'http://auth-srv' style only wen they are in the same namespace
+
+
+
 ----
 
 ### Docker
