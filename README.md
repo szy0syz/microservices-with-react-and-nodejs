@@ -828,13 +828,14 @@ module.exports = {
 
 #### 🔥 Fetching Data During SSR in Cluster
 
-> 重点来了
+> ☢️ 🌝 🍥 ⭕️ 重点来了
 
 ```js
 // 注意这里不能这么用！
 LandingPage.getInitialProps = async context => {
-  // axios.get('/api/users') ...
-  // return data;
+  // const res = await axios.get('/api/users');
+  // ...
+  // return res.data;
 };
 ```
 
@@ -842,6 +843,7 @@ LandingPage.getInitialProps = async context => {
   - 服务端用的是 `k8s` 里的 `clusterIP`
   - 客户端用的是 `外网地址`
   - 区别可大了 😂
+- 所以呢，我们应该构建一个请求 `request`，让它知道自己是在服务端环境还是客服端环境 !!!
 
 ----
 
