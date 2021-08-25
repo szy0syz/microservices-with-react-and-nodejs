@@ -809,6 +809,8 @@ spec:
 - We will be writing the Next app using javascript, not typescript
 - It would be normally be beneficial to use TS, bug this app in particular would need a lot of extra TS stuff written out for little benefit
 
+> 老哥的意思是前端并非本课重点，而且使用 `TS` 会增加代码量，间接增加前端课程的时间，所以为了突显终点前端项目就用 `JS`
+
 重要提示
 
 > `nextjs` 在 `k8s` 和 `skaffold` 中监听代码变化时必须加载如下配置：

@@ -13,6 +13,7 @@ const AppComponent = ({ Component, pageProps, currentUser }) => {
 
 AppComponent.getInitialProps = async appContext => {
   const client = buildClient(appContext.ctx);
+  // 这里会带上客户端传来的 cookie
   const { data } = await client.get('/api/users/currentuser');
 
   let pageProps = {};
