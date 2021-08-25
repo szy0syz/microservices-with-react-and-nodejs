@@ -806,6 +806,23 @@ spec:
 
 ![088](images/088.png)
 
+- We will be writing the Next app using javascript, not typescript
+- It would be normally be beneficial to use TS, bug this app in particular would need a lot of extra TS stuff written out for little benefit
+
+重要提示
+
+> `nextjs` 在 `k8s` 和 `skaffold` 中监听代码变化时必须加载如下配置：
+
+```js
+module.exports = {
+  webpackDevMiddleware: (config) => {
+    config.watchOptions.poll = 300;
+    return config;
+  },
+};
+
+```
+
 ----
 
 ### Docker

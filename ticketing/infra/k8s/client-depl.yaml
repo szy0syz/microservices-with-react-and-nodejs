@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: cygnetops/ticketing-client
+          image: registry.cn-shenzhen.aliyuncs.com/444/ticketing-client
 ---
 apiVersion: v1
 kind: Service
