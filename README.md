@@ -798,6 +798,14 @@ spec:
 
 - `yarn add -D @types/jest @types/supertest jest ts-jest supertest mongodb-memory-server`
 
+![087](images/087.png)
+
+- 在测试登录时，可以在全局global添加一些方法，保存登录token，因为每个函数都是独立作用域，没法全局保存一个登录信息，避免每次登录
+
+### 11.Integrating a Server-Side-Rendered React App
+
+![088](images/088.png)
+
 ----
 
 ### Docker
