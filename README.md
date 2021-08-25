@@ -897,6 +897,7 @@ kube-dns
 - 最后启动时 `'minikube start --vm=true'`
   - 因为使用 `docker` 驱动时，我在 `MacOS` 没法成功，所以用 `virtualbox` ，所以务必加上 `--vm=true` 参数
   - `minikube start --registry-mirror=https://registry.docker-cn.com --kubernetes-version=1.18.8 --driver=virtualbox --vm=true`
+- 最后再重复一遍：集群内部访问service的套路是 **servicename.namespacename.svc.cluster.local**
 
 ----
 
