@@ -862,6 +862,42 @@ LandingPage.getInitialProps = async context => {
 - **开着 v2ray 全局模式** `k8s` 的 `ingress` 就失效
 - k8s 集群内部访问套路：**servicename.namespacename.svc.cluster.local**
 
+> 一个 `minikube` 参数搞了我4个小时，这个 `k8s` 简直玩死人。
+
+#### minikube ingress 启动但没服务或服务没80端口问题
+
+先看症状：
+
+```bash
+$ k get namespaces
+NAME              STATUS   AGE
+default           Active   8d
+kube-node-lease   Active   8d
+kube-public       Active   8d
+kube-system       Active   8d
+```
+
+- 如上所示，没有常规的 `ingress-nginx` 命名空间!
+- 其实是隐藏在 `kube-system`
+
+```bash
+$ k get services -n kube-system
+NAME                                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                   AGE
+ingress-nginx-controller-admission   ClusterIP   10.101.117.241   <none>        443/TCP                   7d23h
+kube-dns
+```
+
+- 哦豁，有个很像的 `service` `ingress-nginx-controller-admission`
+- 但老狗的没 80 端口肯定不对
+
+> **解决方案**
+
+- 首先: `kubectl expose deployment ingress-nginx-controller --target-port=80 --type=ClusterIP -n kube-system`
+  - 没有开80和443的 `ingress-nginx-controller`，我手动加一个
+- 最后启动时 `'minikube start --vm=true'`
+  - 因为使用 `docker` 驱动时，我在 `MacOS` 没法成功，所以用 `virtualbox` ，所以务必加上 `--vm=true` 参数
+  - `minikube start --registry-mirror=https://registry.docker-cn.com --kubernetes-version=1.18.8 --driver=virtualbox --vm=true`
+
 ----
 
 ### Docker
