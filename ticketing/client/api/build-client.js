@@ -3,7 +3,7 @@ import axios from 'axios';
 export default ({ req }) => {
   if (typeof window === 'undefined') {
     // We are on the server
-    return axios.create({
+    return axios.create({ // create 方法应该是个单例
       baseURL: 'http://ingress-nginx-controller.kube-system.svc.cluster.local',
       headers: req.headers,
     });

@@ -948,6 +948,14 @@ spec:
   type: NodePort
 ```
 
+![100](images/100.png)
+
+> 我们在集群里 `nextjs` 做服务端渲染时，记得把 `req.headers` 传递下去
+
+![101](images/101.png)
+
+> 为什么要运行两次 getInitialProps ？
+
 ----
 
 ### Docker
