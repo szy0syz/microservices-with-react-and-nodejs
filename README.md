@@ -857,6 +857,8 @@ LandingPage.getInitialProps = async context => {
 
 ![095](images/095.png)
 
+![096](images/096.png)
+
 > [重点] We access services using that 'http://auth-srv' style only wen they are in the same namespace
 
 - **开着 v2ray 全局模式** `k8s` 的 `ingress` 就失效
@@ -900,6 +902,14 @@ kube-dns
   - 因为使用 `docker` 驱动时，我在 `MacOS` 没法成功，所以用 `virtualbox` ，所以务必加上 `--vm=true` 参数
   - `minikube start --registry-mirror=https://registry.docker-cn.com --kubernetes-version=1.18.8 --driver=virtualbox --vm=true`
 - 最后再重复一遍：集群内部访问service的套路是 **servicename.namespacename.svc.cluster.local**
+
+#### Service 解决了什么问题
+
+![097](images/097.png)
+
+- 我们应该如何为一个 `Pod` 建立一个抽象，让另一个 `Pod` 找到它呢？
+  - 答案：`Service`
+  - 每一个 `Service` 都是一组 `Pods` 的逻辑集合
 
 ----
 
