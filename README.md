@@ -954,7 +954,10 @@ spec:
 
 ![101](images/101.png)
 
-> 为什么要运行两次 getInitialProps ？
+- 为什么要运行两次 `getInitialProps` ？
+- 一次在 `Custome_AppComponent` 中，一次又在 `IndexPage` 中
+- 在 `IndexPage` 中的每次刷新都执行
+- 其实可以在 `Custome_AppComponent` 中的使之传递下来即可
 
 ----
 
