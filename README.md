@@ -931,6 +931,23 @@ kube-dns
 - 其实我们可以给这个 B 服务的访问地址定义一个 **名字**，当 B 服务部署时，自动解析并去DNS注册这个 **名字** 即可。
 - 这就是 k8 内部的 `服务发现` 机制！
 
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello
+spec:
+  selector:
+    app: hello
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30080
+  type: NodePort
+```
+
 ----
 
 ### Docker
