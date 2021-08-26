@@ -963,6 +963,24 @@ spec:
 
 > 我只能管理到我儿子辈的，我可以传，也可以不传，我还可以拿到儿子辈的东西。
 
+### 12 Code Sharing and Reuse Between Services
+
+- ❓ What about event-related stuff for the auth service?
+- ❓ It turns out that no other services really need to know about what the auth service is doing?
+- ❓ Everything the auth service does is exposed through that JWT in the cookie
+
+![103](images/103.png)
+
+js的代码复用一般有三种办法
+
+- #1 - Direct Copy Paste
+- #2 - Git Submodule
+- #3 - NPM Package (也可以自己搭私服)
+
+- There might be differences in out TS settings between the common lib and our services - don't want to deal with that
+- Service might not be written with TS at all!
+- Our common library will be written Typescript and published as Javascript
+
 ----
 
 ### Docker
