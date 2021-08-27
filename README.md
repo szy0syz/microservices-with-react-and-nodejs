@@ -1020,14 +1020,14 @@ const start = async () => {
 
 #### 感悟
 
-> <span style="color: #e74c3c;font-size: 17px">好代码 -> 几乎一样</span>
+> <span style="color: #e74c3c;font-size: 18px">好代码 -> 几乎一样</span>
 >
-> <span style="color: #e74c3c;font-size: 17px">烂代码 -> 千奇百怪</span>
+> <span style="color: #e74c3c;font-size: 18px">烂代码 -> 千奇百怪</span>
 
 原来听到这句话，当时不是很理解，现在真的被感觉出来了：
 
-- 一个 2 年前的代码，美国人写的
-- 一个 1 年前的代码，俄罗斯人写的
+- 一个两年前的代码，美国人写的
+- 一个一年前的代码，俄罗斯人写的
 - 一个最近一周的代码，印度人写的
 
 > <span style="color: #e74c3c;font-size: 17px">几乎一样！</span>
