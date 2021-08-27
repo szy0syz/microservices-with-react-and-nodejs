@@ -4,15 +4,15 @@
 
 ## Menu
 
-01. Fundamental Ideas Around Microservices
-02. A Mini-Microservices App
-03. Running Services with Docker
-04. Orchestrating Collections of Services with Kubernetes
-05. Architecture of Multi-Service Apps
-06. Leveraging a Cloud Environment for Development
-07. Response Normalization Strategies
-08. Database Management and Modeling
-09. Authentication Strategies and Options
+1.  Fundamental Ideas Around Microservices
+2.  A Mini-Microservices App
+3.  Running Services with Docker
+4.  Orchestrating Collections of Services with Kubernetes
+5.  Architecture of Multi-Service Apps
+6.  Leveraging a Cloud Environment for Development
+7.  Response Normalization Strategies
+8.  Database Management and Modeling
+9.  Authentication Strategies and Options
 10. Testing Isolated Microservices
 11. Integrating a Server-Side-Rendered React App
 12. Code Sharing and Reuse Between Services
@@ -54,7 +54,7 @@
 
 ![004](images/004.png)
 
-> 一直没想好怎么解释A服务调B服务的数据库的弊端，原来如此。
+> 一直没想好怎么解释 A 服务调 B 服务的数据库的弊端，原来如此。
 
 #### Why Database-Per-Service
 
@@ -68,6 +68,7 @@
 > 老哥出个题目都那么专业 🐂 🐃 🐄 🦏
 
 - 👀 Creating one database per service seems like a waste! Why do we create one database per services?
+
   - ✅ We want every service to be able to act independently whitout depending on any other service
   - ✅ If each service has its own database, we can optimize what type of database we pick for a service
   - ✅ A single databse shared between many services would be a single point of failure, which would limit the reliability of our app
@@ -90,10 +91,10 @@
 - 同步通信要点
   - Conceptually easy to understand! (概念很简单)
   - Service D won't need a databse! (服务器不需要依赖数据库)
-  - introduces a dependency between services (引入一个依赖在各服务之间！而不是A去调B、C，我以前真是这么干的)
+  - introduces a dependency between services (引入一个依赖在各服务之间！而不是 A 去调 B、C，我以前真是这么干的)
   - If any inter-service request fails, the overall request fails (其中任何一个子服务出错，则整个业务链上的请求也出错)
   - The entire request is only as fast as the slowest request (一个完整的请求是否完成得看最慢的哪一个子请求)
-  - Can easilty intoduce webs of requests (好处？轻松接入各种web请求)
+  - Can easilty intoduce webs of requests (好处？轻松接入各种 web 请求)
 
 举个同步通信的例子 🌰
 
@@ -194,7 +195,7 @@
 - 如下有三种方式：
   - 第一种 `“同步请求”`：每次来请求了，两边数据源都问一遍！😂
   - 第二种 `“直连数据库”`：不说了，不可能！
-  - 第三种：`“存储事件消息”`：目前比较合适的方案，这个方案的确是CQRS！
+  - 第三种：`“存储事件消息”`：目前比较合适的方案，这个方案的确是 CQRS！
     - 老哥一直在给 NATS 作铺垫，原生自带解决方案嘛
 
 ![019](images/019.png)
@@ -217,8 +218,8 @@
 
 这样的好处就是：
 
-- Query Service 挂了，我Posts照样能写
-- Moderation Service 挂了，我查询和下入照样OK
+- Query Service 挂了，我 Posts 照样能写
+- Moderation Service 挂了，我查询和下入照样 OK
 - 我 Comments Service 挂了，我查询照样可以
 
 > 🐂 🐄 🦏 🦬 🐃
@@ -301,9 +302,9 @@ spec:
 
 ![037](images/037.png)
 
-- `Cluster IP` 取个号输入的url让pord可以再k8s的集群内部被访问！
-- `Node Port` 让pod可以被“外网访问”，但都是用于开发测试
-- `Load Balancer` 这才是正确的让pod被访问的正确方式，生产用
+- `Cluster IP` 取个号输入的 url 让 pord 可以再 k8s 的集群内部被访问！
+- `Node Port` 让 pod 可以被“外网访问”，但都是用于开发测试
+- `Load Balancer` 这才是正确的让 pod 被访问的正确方式，生产用
 - `External Name` 取个别名 CNAME
 
 ```yaml
@@ -324,7 +325,7 @@ spec:
 
 ![038](images/038.png)
 
-> 简直玩死人！macOS+docker的minikube 网络访问是个坑，玩了个一个半小时，换vm才可以！直接从23点坑到1点多，搞死！
+> 简直玩死人！macOS+docker 的 minikube 网络访问是个坑，玩了个一个半小时，换 vm 才可以！直接从 23 点坑到 1 点多，搞死！
 
 ```bash
 $ minikube start --registry-mirror=https://registry.docker-cn.com --kubernetes-version=1.18.8 --driver=virtualbox
@@ -336,7 +337,7 @@ $ minikube service posts-srv --url
 http://192.168.99.100:31557
 ```
 
-#### ClusterIP的正确用法
+#### ClusterIP 的正确用法
 
 ![039](images/039.png)
 
@@ -427,7 +428,7 @@ Events:
 
 ![041](images/041.png)
 
-方案一：此方案肯定不行。要管理多个NodePort的服务，况且它也扛不住，只能用来开发。对了而且这个端口多数情况是随机，也能手动固定。
+方案一：此方案肯定不行。要管理多个 NodePort 的服务，况且它也扛不住，只能用来开发。对了而且这个端口多数情况是随机，也能手动固定。
 
 ![042](images/042.png)
 
@@ -438,21 +439,21 @@ Events:
 
 #### ingress
 
-> service时有说了暴露了service的三种方式ClusterIP、NodePort与LoadBalance，这几种方式都是在service的维度提供的，service的作用体现在两个方面，对集群内部，它不断跟踪pod的变化，更新endpoint中对应pod的对象，提供了ip不断变化的pod的服务发现机制，对集群外部，他类似负载均衡器，可以在集群内外部对pod进行访问。但是，单独用service暴露服务的方式，在实际生产环境中不太合适：
+> service 时有说了暴露了 service 的三种方式 ClusterIP、NodePort 与 LoadBalance，这几种方式都是在 service 的维度提供的，service 的作用体现在两个方面，对集群内部，它不断跟踪 pod 的变化，更新 endpoint 中对应 pod 的对象，提供了 ip 不断变化的 pod 的服务发现机制，对集群外部，他类似负载均衡器，可以在集群内外部对 pod 进行访问。但是，单独用 service 暴露服务的方式，在实际生产环境中不太合适：
 >
-> 1.ClusterIP的方式只能在集群内部访问。
-> 2.NodePort方式的话，测试环境使用还行，当有几十上百的服务在集群中运行时，NodePort的端口管理是灾难。
-> 3.LoadBalance方式受限于云平台，且通常在云平台部署ELB还需要额外的费用。
+> 1.ClusterIP 的方式只能在集群内部访问。
+> 2.NodePort 方式的话，测试环境使用还行，当有几十上百的服务在集群中运行时，NodePort 的端口管理是灾难。
+> 3.LoadBalance 方式受限于云平台，且通常在云平台部署 ELB 还需要额外的费用。
 >
-> 所幸k8s还提供了一种集群维度暴露服务的方式，也就是ingress。ingress可以简单理解为service的service，他通过独立的ingress对象来制定请求转发的规则，把请求路由到一个或多个service中。这样就把服务与请求规则解耦了，可以从业务维度统一考虑业务的暴露，而不用为每个service单独考虑。
+> 所幸 k8s 还提供了一种集群维度暴露服务的方式，也就是 ingress。ingress 可以简单理解为 service 的 service，他通过独立的 ingress 对象来制定请求转发的规则，把请求路由到一个或多个 service 中。这样就把服务与请求规则解耦了，可以从业务维度统一考虑业务的暴露，而不用为每个 service 单独考虑。
 >
-> 举个例子，现在集群有api、文件存储、前端3个service，可以通过一个ingress对象来实现图中的请求转发：
+> 举个例子，现在集群有 api、文件存储、前端 3 个 service，可以通过一个 ingress 对象来实现图中的请求转发：
 
 ![044](images/044.png)
 
 `ingress` 规则是很灵活的，可以根据不同域名、不同 `path` 转发请求到不同的 `service` ，并且支持 `https`/`http。`
 
-[k8s ingress原理](https://segmentfault.com/a/1190000019908991)
+[k8s ingress 原理](https://segmentfault.com/a/1190000019908991)
 
 ```yaml
 apiVersion: networking.k8s.io/v1beta1
@@ -472,7 +473,7 @@ spec:
               servicePort: 4000
 ```
 
-- 这里有 `posts.com`，因为 `vm=VirtualBox` 所以在hosts修改 posts.com 到 `minikube ip`
+- 这里有 `posts.com`，因为 `vm=VirtualBox` 所以在 hosts 修改 posts.com 到 `minikube ip`
 
 > 太屌了，炸裂了。
 
@@ -618,7 +619,7 @@ We want an object like an 'Error', but we want to add in some more custom proper
 - 定义一个类，重写所有抽象类的字段
 - 构造函数定义默认的 message 字符串
 
-> k8s中部署 MongoDB 真有意思
+> k8s 中部署 MongoDB 真有意思
 
 ```yaml
 apiVersion: apps/v1
@@ -659,7 +660,7 @@ spec:
 对了，接下来就是 `mongoose` + `js` 的诟病，无法知晓属性类型嘛，怎么利用 `TS` 呢？
 
 ```js
-new User({ email: '123@123.com', password: '123123' })
+new User({ email: '123@123.com', password: '123123' });
 ```
 
 ![062](images/062.png)
@@ -734,7 +735,7 @@ export class Password {
 
 > 在 SSR 中解决首次渲染问题的方案就是，登录成功时不仅返回 jwt 还要设置 cookies
 >
-> 那么就可以在授权期内，使用cookie中不加密的jwt完成首次渲染没法获取登录信息的问题
+> 那么就可以在授权期内，使用 cookie 中不加密的 jwt 完成首次渲染没法获取登录信息的问题
 
 #### Securely Storing Secrets with Kubernetes
 
@@ -761,7 +762,7 @@ spec:
 
 ![078](images/078.png)
 
-为了统一，我们必须将不同服务+数据库的返回格式JSON统一。
+为了统一，我们必须将不同服务+数据库的返回格式 JSON 统一。
 
 那么就有一个问题，user 集合里的 password。
 
@@ -800,7 +801,7 @@ spec:
 
 ![087](images/087.png)
 
-- 在测试登录时，可以在全局global添加一些方法，保存登录token，因为每个函数都是独立作用域，没法全局保存一个登录信息，避免每次登录
+- 在测试登录时，可以在全局 global 添加一些方法，保存登录 token，因为每个函数都是独立作用域，没法全局保存一个登录信息，避免每次登录
 
 ### 11.Integrating a Server-Side-Rendered React App
 
@@ -832,7 +833,7 @@ module.exports = {
 
 ```js
 // 注意这里不能这么用！
-LandingPage.getInitialProps = async context => {
+LandingPage.getInitialProps = async (context) => {
   // const res = await axios.get('/api/users');
   // ...
   // return res.data;
@@ -864,11 +865,11 @@ LandingPage.getInitialProps = async context => {
 - **开着 v2ray 全局模式** `k8s` 的 `ingress` 就失效
 - k8s 集群内部访问套路：**servicename.namespacename.svc.cluster.local**
 
-> 一个 `minikube` 参数搞了我4个小时，这个 `k8s` 简直玩死人。
+> 一个 `minikube` 参数搞了我 4 个小时，这个 `k8s` 简直玩死人。
 >
 > 这个集群内部或跨命名空间访问是如此重要，必须鼓着搞出来，要不然业务线会短啊！
 
-#### minikube ingress 启动但没服务或服务没80端口问题
+#### minikube ingress 启动但没服务或服务没 80 端口问题
 
 先看症状：
 
@@ -897,11 +898,11 @@ kube-dns
 > 🚀 🚀 🚀 🚀 **解决方案** 🚀 🚀 🚀 🚀
 
 - 首先: `kubectl expose deployment ingress-nginx-controller --target-port=80 --type=ClusterIP -n kube-system`
-  - 没有开80和443的 `ingress-nginx-controller`，我手动加一个
+  - 没有开 80 和 443 的 `ingress-nginx-controller`，我手动加一个
 - 最后启动时 `'minikube start --vm=true'`
   - 因为使用 `docker` 驱动时，我在 `MacOS` 没法成功，所以用 `virtualbox` ，所以务必加上 `--vm=true` 参数
   - `minikube start --registry-mirror=https://registry.docker-cn.com --kubernetes-version=1.18.8 --driver=virtualbox --vm=true`
-- 最后再重复一遍：集群内部访问service的套路是 **servicename.namespacename.svc.cluster.local**
+- 最后再重复一遍：集群内部访问 service 的套路是 **servicename.namespacename.svc.cluster.local**
 
 #### Service 解决了什么问题
 
@@ -928,7 +929,7 @@ kube-dns
 
 - 在 k8s 中，A 访问 B 服务，如果 B 服务是一个还没有部署的服务，我们是不知道 B 服务的 IP 或者 域名 是多少。
 - 那么我们在编写 A 服务的代码时，如何描述 B 服务的 **访问地址** 呢？
-- 其实我们可以给这个 B 服务的访问地址定义一个 **名字**，当 B 服务部署时，自动解析并去DNS注册这个 **名字** 即可。
+- 其实我们可以给这个 B 服务的访问地址定义一个 **名字**，当 B 服务部署时，自动解析并去 DNS 注册这个 **名字** 即可。
 - 这就是 k8 内部的 `服务发现` 机制！
 
 ```yaml
@@ -971,7 +972,7 @@ spec:
 
 ![103](images/103.png)
 
-js的代码复用一般有三种办法
+js 的代码复用一般有三种办法
 
 - #1 - Direct Copy Paste
 - #2 - Git Submodule
@@ -982,7 +983,7 @@ js的代码复用一般有三种办法
 - Our common library will be written Typescript and published as Javascript
 
 - 在单独使用共享库时，更新库使用 `npm update @js-ticketing/common`
-- 发布了新的 common 库，最好去关联pod或容器内看看是否用上了最新的库
+- 发布了新的 common 库，最好去关联 pod 或容器内看看是否用上了最新的库
 
 ### 13 Create-Read-Update-Destroy Server Setup
 
@@ -992,19 +993,19 @@ Ticketing Service Overview
 
 #### 感悟
 
-> `好代码 -> 几乎一样`
+> <span style="color: #e74c3c;font-size: 17px">好代码 -> 几乎一样</span>
 >
-> `烂代码 -> 千奇百怪`
+> <span style="color: #e74c3c;font-size: 17px">烂代码 -> 千奇百怪</span>
 
 原来听到这句话，当时不是很理解，现在真的被感觉出来了：
 
-- 一个2年前的代码，美国人写的
-- 一个1年前的代码，俄罗斯人写的
+- 一个 2 年前的代码，美国人写的
+- 一个 1 年前的代码，俄罗斯人写的
 - 一个最近一周的代码，印度人写的
 
-> 几乎一样！
+> <span style="color: #e74c3c;font-size: 17px">几乎一样！</span>
 
-----
+---
 
 ### Docker
 
