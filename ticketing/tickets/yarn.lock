@@ -512,6 +512,19 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
+"@js-ticketing/common@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/@js-ticketing/common/-/common-1.0.4.tgz#bc3133506e5414c9656140bfc51a3c6c0e441472"
+  integrity sha512-pYJ77vaqi/IEytvpPgQBQX72or+fjPr4TldyzaSzFBIdwqYU4p1hPw5ejhwpkwo3KzMbEEFnfGT4UHJq0vwfHQ==
+  dependencies:
+    "@types/cookie-session" "^2.0.42"
+    "@types/express" "^4.17.12"
+    "@types/jsonwebtoken" "^8.5.1"
+    cookie-session "^1.4.0"
+    express "^4.17.1"
+    express-validator "^6.12.0"
+    jsonwebtoken "^8.5.1"
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
   resolved "https://registry.npmjs.org/@sinonjs/commons/-/commons-1.8.3.tgz#3802ddd21a50a949b6721ddd72da36e67e7f1b2d"

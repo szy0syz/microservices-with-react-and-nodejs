@@ -2,7 +2,7 @@ import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
-import { errorHandler, NotFoundError, currentUser } from '@cygnetops/common';
+import { errorHandler, NotFoundError, currentUser } from '@js-ticketing/common';
 import { createTicketRouter } from './routes/new';
 import { showTicketRouter } from './routes/show';
 
@@ -15,6 +15,8 @@ app.use(
     secure: process.env.NODE_ENV !== 'test',
   })
 );
+
+// 具体业务服务，非公共服务，需要拿到用户信息
 app.use(currentUser);
 
 app.use(createTicketRouter);
