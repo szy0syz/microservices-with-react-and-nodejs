@@ -36,7 +36,7 @@ it('returns a 401 if the user does not own the ticket', async () => {
 
   await request(app)
     .put(`/api/tickets/${response.body.id}`)
-    .set('Cookie', global.signin())
+    .set('Cookie', global.signin()) // 这里还是同一个人啊
     .send({
       title: 'alskdjflskjdf',
       price: 1000,

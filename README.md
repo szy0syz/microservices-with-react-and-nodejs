@@ -1060,6 +1060,8 @@ it('creates a ticket with valid inputs', async () => {});
 
 ![107](images/107.png)
 
+### 14 NATS Streaming Server
+
 ---
 
 ### Docker

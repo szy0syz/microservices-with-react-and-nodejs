@@ -1,3 +1,47 @@
+### current user
+GET https://ticketing.dev:/api/users/currentuser
+
+### sign up
+POST  https://ticketing.dev:/api/users/signup
+Content-Type: application/json
+
+{
+  "email": "1@123.com",
+  "password": "123123"
+}
+
+### sign in
+POST https://ticketing.dev:/api/users/signin
+Content-Type: application/json
+
+{
+  "email": "123@123.com",
+  "password": "123123"
+}
+
+### create a ticket
+POST https://ticketing.dev:/api/tickets
+Content-Type: application/json
+
+{
+  "title": "ticket - 2",
+  "price": 20
+}
+
+### fetch tickets
+GET https://ticketing.dev:/api/tickets
+
+### update a ticket
+PUT https://ticketing.dev:/api/tickets/6128bb445f4da80034fc68bb
+Content-Type: application/json
+
+{
+  "title": "ticket - 1-1",
+  "price": 11
+}
+
+### -----------------------------------
+
 ### create a post
 POST http://192.168.99.100:30392/posts
 Content-Type: application/json
