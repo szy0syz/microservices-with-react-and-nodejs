@@ -1058,6 +1058,8 @@ it('creates a ticket with valid inputs', async () => {});
 
 ![106](images/106.png)
 
+![107](images/107.png)
+
 ---
 
 ### Docker
