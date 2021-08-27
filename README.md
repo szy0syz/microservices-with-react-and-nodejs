@@ -4,15 +4,15 @@
 
 ## Menu
 
-1.  Fundamental Ideas Around Microservices
-2.  A Mini-Microservices App
-3.  Running Services with Docker
-4.  Orchestrating Collections of Services with Kubernetes
-5.  Architecture of Multi-Service Apps
-6.  Leveraging a Cloud Environment for Development
-7.  Response Normalization Strategies
-8.  Database Management and Modeling
-9.  Authentication Strategies and Options
+1. Fundamental Ideas Around Microservices
+2. A Mini-Microservices App
+3. Running Services with Docker
+4. Orchestrating Collections of Services with Kubernetes
+5. Architecture of Multi-Service Apps
+6. Leveraging a Cloud Environment for Development
+7. Response Normalization Strategies
+8. Database Management and Modeling
+9. Authentication Strategies and Options
 10. Testing Isolated Microservices
 11. Integrating a Server-Side-Rendered React App
 12. Code Sharing and Reuse Between Services
@@ -991,6 +991,33 @@ Ticketing Service Overview
 
 ![104](images/104.png)
 
+```ts
+const start = async () => {
+  if (!process.env.JWT_KEY) {
+    throw new Error('JWT_KEY must be defined');
+  }
+
+  if (!process.env.MONGO_URI) {
+    throw new Error('MONGO_URI must be defined');
+  }
+
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true
+    });
+    console.log('Connected to MongoDb');
+  } catch (err) {
+    console.error(err);
+  }
+
+  app.listen(3000, () => {
+    console.log('Listening on port 3000!!!!!!!!');
+  });
+};
+```
+
 #### 感悟
 
 > <span style="color: #e74c3c;font-size: 17px">好代码 -> 几乎一样</span>
@@ -1004,6 +1031,30 @@ Ticketing Service Overview
 - 一个最近一周的代码，印度人写的
 
 > <span style="color: #e74c3c;font-size: 17px">几乎一样！</span>
+
+#### 测试先行
+
+![105](images/105.png)
+
+- 我们要写一个业务，框架已搭建好，只需要从流量入口开始写，那些是 `controller`
+- 因为写入已经很明确，看上图所以可以先写测试用例
+
+```ts
+import request from 'supertest';
+import { app } from '../../app';
+
+it('has a route handler listening to /api/tickets for post requests', async () => {});
+
+it('can only be accessed if the user is signed in', async () => {});
+
+it('returns an error if an invalid title is provided', async () => {});
+
+it('returns an error if an invalid price is provided', async () => {});
+
+it('creates a ticket with valid inputs', async () => {});
+
+// npm run test // -> 测试走起
+```
 
 ---
 
