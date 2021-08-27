@@ -981,6 +981,17 @@ js的代码复用一般有三种办法
 - Service might not be written with TS at all!
 - Our common library will be written Typescript and published as Javascript
 
+- 在单独使用共享库时，更新库使用 `npm update @js-ticketing/common`
+- 发布了新的 common 库，最好去关联pod或容器内看看是否用上了最新的库
+
+### 13 Create-Read-Update-Destroy Server Setup
+
+Ticketing Service Overview
+
+![104](images/104.png)
+
+- ``
+
 ----
 
 ### Docker
