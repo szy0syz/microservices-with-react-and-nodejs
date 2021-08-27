@@ -1056,6 +1056,8 @@ it('creates a ticket with valid inputs', async () => {});
 // npm run test // -> 测试走起
 ```
 
+![106](images/106.png)
+
 ---
 
 ### Docker

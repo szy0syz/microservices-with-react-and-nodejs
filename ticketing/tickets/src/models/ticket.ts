@@ -6,6 +6,7 @@ interface TicketAttrs {
   userId: string;
 }
 
+// 这里会带有 createdAt/updatedAt
 interface TicketDoc extends mongoose.Document {
   title: string;
   price: number;
