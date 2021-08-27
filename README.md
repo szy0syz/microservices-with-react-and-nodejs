@@ -1062,6 +1062,19 @@ it('creates a ticket with valid inputs', async () => {});
 
 ### 14 NATS Streaming Server
 
+![108](images/108.png)
+
+![109](images/109.png)
+
+![110](images/110.png)
+
+#### NATS Streaming
+
+- docs.nats.io
+- NATS and NATS Streaming Server are two different things
+- NATS Streaming implements some extraordinarily important design decisions that will affect our app
+- We are going to run the official `nats-streaming` docker image in k8s. Need to read the image's docs.
+
 ---
 
 ### Docker
