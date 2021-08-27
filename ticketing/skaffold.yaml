@@ -24,3 +24,11 @@ build:
         manual:
           - src: 'src/**/*.js'
             dest: .
+    - image: registry.cn-shenzhen.aliyuncs.com/444/ticketing-tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
