@@ -1227,6 +1227,23 @@ const subscription = stan.subscribe(
 
 #### Graceful Client Shutdown
 
+```ts
+stan.on('close', () => {
+  console.log('NATS connection closed!');
+  process.exit();
+})
+
+process.on('SIGINT', () => stan.close());
+process.on('SIGNTERM', () => stan.close());
+```
+
+- 📢 注意：只有做了优雅的退出，服务端的 `clients` 数量才是正常的，要不然还要麻烦 “别人”。
+
+#### Core Concurrency Issues
+
+> 关键并发问题
+
+![120](images/120.png)
 
 ---
 
