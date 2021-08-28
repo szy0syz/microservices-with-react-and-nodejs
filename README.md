@@ -1245,6 +1245,22 @@ process.on('SIGNTERM', () => stan.close());
 
 ![120](images/120.png)
 
+![121](images/121.png)
+
+![122](images/122.png)
+
+#### Solving Concurrency Issues
+
+- We are working with a poorly designed system and relying on NATS to somehow save us
+- We should revisit the service design
+- If we redesign the system, a better solution to this concurrency stuff will present itself
+
+> 真期待 🤔
+>
+> 是的，我们应该回头看看我们的 `mini-posts` 或许可以给我们什么解决灵感
+
+![123](images/123.png)
+
 ---
 
 ### Docker
