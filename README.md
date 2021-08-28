@@ -1075,6 +1075,42 @@ it('creates a ticket with valid inputs', async () => {});
 - NATS Streaming implements some extraordinarily important design decisions that will affect our app
 - We are going to run the official `nats-streaming` docker image in k8s. Need to read the image's docs.
 
+```yaml
+containers:
+  - name: nats
+    image: nats-streaming:0.17.0
+    args:
+      [
+        '-p',
+        '4222',
+        '-m',
+        '8222',
+        '-hbi',
+        '5s',
+        '-hbt',
+        '5s',
+        '-hbf',
+        '2',
+        '-SD',
+        '-cid',
+        'ticketing',
+      ]
+```
+
+- -cid, --cluster_id  `<string>`         Cluster ID (default: test-cluster)
+- -hbi, --hb_interval `<duration>`       Interval at which server sends heartbeat to a client
+- -hbt, --hb_timeout `<duration>`        How long server waits for a heartbeat response
+- -hbf, --hb_fail_count `<int>`          Number of failed heartbeats before server closes the client connection
+- -SD, --stan_debug=`<bool>`         Enable STAN debugging output
+
+#### Big Notes on NATS Streaming
+
+![111](images/111.png)
+
+![112](images/112.png)
+
+![113](images/113.png)
+
 ---
 
 ### Docker
