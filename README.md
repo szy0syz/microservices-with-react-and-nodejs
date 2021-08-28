@@ -1147,6 +1147,22 @@ containers:
   const subscription = stan.subscribe('ticket:created', 'orders-service-queue-group');
 ```
 
+#### Manual Ack Mode
+
+> 手动确认收到模式
+
+```ts
+const options = stan.subscriptionOptions().setManualAckMode(true);
+
+const subscription = stan.subscribe(
+  'ticket:created',
+  'orders-service-queue-group',
+  options
+);
+```
+
+![119](images/119.png)
+
 ---
 
 ### Docker
