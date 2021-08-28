@@ -1131,6 +1131,22 @@ containers:
 - `NATS` 是不允许两个相同 `ClientID` 的存在 ❌
 - 所以 listener 的ID `randomBytes(4).toString('hex')`
 
+### Queue Groups
+
+> 队列分组
+
+![117](images/117.png)
+
+![118](images/118.png)
+
+- 只给分组里的一个 Listener 发送
+- 没分组，但又监听那个频道的所有 Listener 都会收到
+- NATS 就是如此之简单
+
+```ts
+  const subscription = stan.subscribe('ticket:created', 'orders-service-queue-group');
+```
+
 ---
 
 ### Docker
