@@ -1101,7 +1101,7 @@ containers:
 - -hbi, --hb_interval `<duration>`       Interval at which server sends heartbeat to a client
 - -hbt, --hb_timeout `<duration>`        How long server waits for a heartbeat response
 - -hbf, --hb_fail_count `<int>`          Number of failed heartbeats before server closes the client connection
-- -SD, --stan_debug=`<bool>`         Enable STAN debugging output
+- -SD, --stan_debug=`<bool>`             Enable STAN debugging output
 
 #### Big Notes on NATS Streaming
 
@@ -1162,6 +1162,71 @@ const subscription = stan.subscribe(
 ```
 
 ![119](images/119.png)
+
+#### Client Health Checks
+
+是时候看我们的 `NATS-Streaming` 了
+
+- `http://localhost:8222/`
+- `http://localhost:8222/streaming`
+  - server - 服务端状态
+  - store
+  - clients: 多少个客户端和其统计
+  - channels
+  - `http://localhost:8222/streaming/channelsz`
+  - `http://localhost:8222/streaming/channelsz?subs=1`
+
+```json
+{
+  "cluster_id": "ticketing",
+  "server_id": "g4fLu1bOVnS8CHONPcBJ9R",
+  "now": "2021-08-28T06:52:48.594224213Z",
+  "offset": 0,
+  "limit": 1024,
+  "count": 1,
+  "total": 1,
+  "channels": [
+    {
+      "name": "ticket:created",
+      "msgs": 4,
+      "bytes": 284,
+      "first_seq": 1,
+      "last_seq": 4,
+      "subscriptions": [
+        {
+          "client_id": "2ae3ce9f",
+          "inbox": "_INBOX.4HBRWIQAJ18FLBJW61DXM6",
+          "ack_inbox": "_INBOX.g4fLu1bOVnS8CHONPcBJUr",
+          "queue_name": "orders-service-queue-group",
+          "is_durable": false,
+          "is_offline": false,
+          "max_inflight": 16384,
+          "ack_wait": 30,
+          "last_sent": 3,
+          "pending_count": 0,
+          "is_stalled": false
+        },
+        {
+          "client_id": "8fa5936d",
+          "inbox": "_INBOX.NOW3ZZ2LSD2WI92T2VIA7K",
+          "ack_inbox": "_INBOX.g4fLu1bOVnS8CHONPcBJaD",
+          "queue_name": "orders-service-queue-group",
+          "is_durable": false,
+          "is_offline": false,
+          "max_inflight": 16384,
+          "ack_wait": 30,
+          "last_sent": 4,
+          "pending_count": 0,
+          "is_stalled": false
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### Graceful Client Shutdown
+
 
 ---
 
