@@ -1126,6 +1126,11 @@ containers:
 },
 ```
 
+#### Client ID Generation
+
+- `NATS` 是不允许两个相同 `ClientID` 的存在 ❌
+- 所以 listener 的ID `randomBytes(4).toString('hex')`
+
 ---
 
 ### Docker
