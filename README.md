@@ -1111,6 +1111,21 @@ containers:
 
 ![113](images/113.png)
 
+![114](images/114.png)
+
+![115](images/115.png)
+
+![116](images/116.png)
+
+- `k port-forward nats-depl-8674c9d8b-z7qgc 4222:4222`
+
+```json
+"scripts": {
+  "publish": "ts-node-dev --rs --notify false src/publisher.ts",
+  "listen": "ts-node-dev --rs --notify false src/listener.ts"
+},
+```
+
 ---
 
 ### Docker
