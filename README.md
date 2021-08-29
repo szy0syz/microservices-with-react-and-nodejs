@@ -1249,6 +1249,13 @@ process.on('SIGNTERM', () => stan.close());
 
 ![122](images/122.png)
 
+#### 因分布式系统原因，待我们解决的问题：
+
+- 某一组 `Services` 集群里的某一个 `Service` 副本在处理业务是会 **失败** ❌
+- 某一个 `Service` 副本一不小心会比其他副本运行的快 🚀
+- NATS 消息总线以为某个已经 `挂彩` 的 `Service` 副本还活着 💀
+- `Services` 集群里的副本有可能接口重复的消息 🌝🌝
+
 #### Solving Concurrency Issues
 
 - We are working with a poorly designed system and relying on NATS to somehow save us
