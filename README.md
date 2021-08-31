@@ -1282,6 +1282,8 @@ process.on('SIGNTERM', () => stan.close());
 
 The Listener Abstract Class -> 👍🏻
 
+> 代码的优美
+
 ```ts
 abstract class Listener {
   private client: Stan;
