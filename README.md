@@ -1330,6 +1330,11 @@ abstract class Listener {
 }
 ```
 
+![125](images/125.png)
+
+- 我们应该把抽象与实现分离
+- 毕竟这个是个微服务项目，所以把 `Class Listener` 放到公共代码，它的实现就散布在实际 `Service` 中即可
+
 ---
 
 ### Docker
