@@ -1272,6 +1272,14 @@ process.on('SIGNTERM', () => stan.close());
 
 #### Concurrency Control with the Tickets App
 
+> TODO
+
+### 15 Connecting to NATS in a Node JS World
+
+![124](images/124.png)
+
+![125](images/125.png)
+
 ---
 
 ### Docker
