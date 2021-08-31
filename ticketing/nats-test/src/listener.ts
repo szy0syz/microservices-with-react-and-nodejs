@@ -13,28 +13,30 @@ stan.on('connect', () => {
   stan.on('close', () => {
     console.log('NATS connection closed!');
     process.exit();
-  })
+  });
 
-  const options = stan.subscriptionOptions().setManualAckMode(true);
+  const options = stan
+    .subscriptionOptions()
+    .setManualAckMode(true)
+    .setDeliverAllAvailable()
+    .setDurableName('accounting-service');
 
   const subscription = stan.subscribe(
     'ticket:created',
-    'orders-service-queue-group',
+    'queue-group-name',
     options
   );
 
   subscription.on('message', (msg: Message) => {
-    console.log(
-      'Message recieved: \n',
-      msg.getSequence(),
-      msg.getSubject(),
-      msg.getData()
-    );
+    const data = msg.getData();
 
+    if (typeof data === 'string') {
+      console.log(`Received event #${msg.getSequence()}, with data: ${data}`);
+    }
 
     msg.ack();
   });
 });
 
 process.on('SIGINT', () => stan.close());
-process.on('SIGNTERM', () => stan.close());
+process.on('SIGTERM', () => stan.close());
