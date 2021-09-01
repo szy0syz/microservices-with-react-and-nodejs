@@ -32,12 +32,12 @@ Content-Type: application/json
 GET https://ticketing.dev:/api/tickets
 
 ### update a ticket
-PUT https://ticketing.dev:/api/tickets/6128bb445f4da80034fc68bb
+PUT https://ticketing.dev:/api/tickets/612fa4aa091ec5001b77bc25
 Content-Type: application/json
 
 {
   "title": "ticket - 1-1",
-  "price": 11
+  "price": 30
 }
 
 ### -----------------------------------
