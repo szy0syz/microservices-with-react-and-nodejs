@@ -1337,6 +1337,14 @@ abstract class Listener {
 - 我们应该把抽象与实现分离
 - 毕竟这个是个微服务项目，所以把 `Class Listener` 放到公共代码，它的实现就散布在实际 `Service` 中即可
 
+![126](images/126.png)
+
+![127](images/127.png)
+
+![128](images/128.png)
+
+消息在通信过程中，我们应该把 subject 用枚举固定下来，千万不能用字符串，因为其不可控，导致data格式错乱，还会引起空指针。
+
 ---
 
 ### Docker
