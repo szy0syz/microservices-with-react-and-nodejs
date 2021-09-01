@@ -1357,6 +1357,12 @@ abstract class Listener {
 
 ![132](images/132.png)
 
+借鉴下 `mongoose`，我们开个单例
+
+![133](images/133.png)
+
+![134](images/134.png)
+
 ---
 
 ### Docker
