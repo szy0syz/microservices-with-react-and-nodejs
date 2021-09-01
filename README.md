@@ -1363,6 +1363,30 @@ abstract class Listener {
 
 ![134](images/134.png)
 
+#### test ticket-created-publisher
+
+- `skaffold dev`
+- `k get pods`
+  - nats-deploment 正常
+  - 把它的 `4222` 手动测试映射出来
+  - `k port-forward nats-depl-69b65fd545-xkcfk 4222:4222`
+- 使用 `nats-test` 里的 `listener` 监听对应 `channel`
+- `rest-api` 接口手动发包，创建 `ticket` ，看 `listener` 是否正常
+
+```bash
+NAME                                  READY   STATUS    RESTARTS   AGE
+auth-depl-58d65454dc-vmggt            1/1     Running   0          70m
+auth-mongo-depl-6cd58b78fb-9cp6v      1/1     Running   0          70m
+client-depl-cfd877c6f-v57ld           1/1     Running   0          70m
+nats-depl-69b65fd545-xkcfk            1/1     Running   0          70m
+tickets-depl-f6b454654-69ftg          1/1     Running   0          70m
+tickets-mongo-depl-8448df7874-5kp5k   1/1     Running   0          70m
+```
+
+![135](images/135.png)
+
+> **非常完美**
+
 ---
 
 ### Docker

@@ -6,7 +6,7 @@ POST  https://ticketing.dev:/api/users/signup
 Content-Type: application/json
 
 {
-  "email": "1@123.com",
+  "email": "123@123.com",
   "password": "123123"
 }
 
@@ -24,8 +24,8 @@ POST https://ticketing.dev:/api/tickets
 Content-Type: application/json
 
 {
-  "title": "ticket - 2",
-  "price": 20
+  "title": "ticket - 1",
+  "price": 59.99
 }
 
 ### fetch tickets
