@@ -1351,6 +1351,10 @@ abstract class Listener {
 
 > 为了预防 `publisher` 昏头杂脑的发些数据，必须重构。
 
+![130](images/130.png)
+
+![131](images/131.png)
+
 ---
 
 ### Docker
