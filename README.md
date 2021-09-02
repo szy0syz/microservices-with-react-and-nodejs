@@ -1455,6 +1455,30 @@ export const natsWrapper = {
 
 ![142](images/142.png)
 
+一个消息发送的技巧
+
+- 因为目前两个服务之间消息通信，如果A服务发给B服务，虽然A觉得发成功了，该有的都有，但例如ticketId不是合法的，B收到缺无法进行业务，这样就会出现分布式事务问题
+- 所以为了尽可能减少这样跨服务之间的事务耦合，`发卡弯的连环车祸`问题，我们因竟可能在发出时就做好自我验证
+- **减少出事的概率，自我认真检查**
+
+```ts
+router.post(
+  '/api/orders',
+  requireAuth,
+  [
+    body('ticketId')
+      .not()
+      .isEmpty()
+      .custom((input: string) => mongoose.Types.ObjectId.isValid(input))
+      .withMessage('TicketId must be provided'),
+  ],
+  validateRequest,
+  async (_: Request, res: Response) => {
+    res.send({});
+  }
+);
+```
+
 ---
 
 ### Docker

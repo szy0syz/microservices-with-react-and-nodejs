@@ -4,7 +4,7 @@ import cookieSession from 'cookie-session';
 import express from 'express';
 import 'express-async-errors';
 import { indexOrderRouter } from './routes/index';
-import { createOrderRouter } from './routes/new';
+import { newOrderRouter } from './routes/new';
 import { showOrderRouter } from './routes/show';
 import { deleteOrderRouter } from './routes/delete';
 
@@ -22,7 +22,7 @@ app.use(
 app.use(currentUser);
 
 app.use(indexOrderRouter);
-app.use(createOrderRouter);
+app.use(newOrderRouter);
 app.use(showOrderRouter);
 app.use(deleteOrderRouter);
 
