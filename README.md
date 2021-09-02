@@ -1448,6 +1448,13 @@ export const natsWrapper = {
 
 ![140](images/140.png)
 
+![141](images/141.png)
+
+- 只复制除了 `node_modules` 和 `src` 以外的支撑文件
+- `docker build -t registry.cn-shenzhen.aliyuncs.com/444/ticketing-orders .`
+
+![142](images/142.png)
+
 ---
 
 ### Docker
