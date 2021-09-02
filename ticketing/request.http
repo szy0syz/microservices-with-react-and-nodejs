@@ -1,8 +1,8 @@
 ### current user
-GET https://ticketing.dev:/api/users/currentuser
+GET https://ticketing.dev/api/users/currentuser
 
 ### sign up
-POST  https://ticketing.dev:/api/users/signup
+POST  https://ticketing.dev/api/users/signup
 Content-Type: application/json
 
 {
@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ### sign in
-POST https://ticketing.dev:/api/users/signin
+POST https://ticketing.dev/api/users/signin
 Content-Type: application/json
 
 {
@@ -19,20 +19,22 @@ Content-Type: application/json
   "password": "123123"
 }
 
+### ----------------------------------------------
+
 ### create a ticket
-POST https://ticketing.dev:/api/tickets
+POST https://ticketing.dev/api/tickets
 Content-Type: application/json
 
 {
-  "title": "ticket - 1",
+  "title": "ticket - 3",
   "price": 59.99
 }
 
 ### fetch tickets
-GET https://ticketing.dev:/api/tickets
+GET https://ticketing.dev/api/tickets
 
 ### update a ticket
-PUT https://ticketing.dev:/api/tickets/612fa4aa091ec5001b77bc25
+PUT https://ticketing.dev/api/tickets/612fa4aa091ec5001b77bc25
 Content-Type: application/json
 
 {
@@ -40,16 +42,8 @@ Content-Type: application/json
   "price": 30
 }
 
-### -----------------------------------
 
-### create a post
-POST http://192.168.99.100:30392/posts
-Content-Type: application/json
+### ----------------------------------------------
 
-{
-  "title": "002 posts"
-}
-
-### fetch posts
-GET http://192.168.99.100:30392/posts
-
+### fetch tickets
+GET https://ticketing.dev/api/orders

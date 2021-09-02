@@ -3,10 +3,10 @@ import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 import express from 'express';
 import 'express-async-errors';
-// import { indexTicketRouter } from './routes';
-// import { createTicketRouter } from './routes/new';
-// import { showTicketRouter } from './routes/show';
-// import { updateTicketRouter } from './routes/update';
+import { indexOrderRouter } from './routes/index';
+import { createOrderRouter } from './routes/new';
+import { showOrderRouter } from './routes/show';
+import { deleteOrderRouter } from './routes/delete';
 
 const app = express();
 app.set('trust proxy', true);
@@ -21,12 +21,12 @@ app.use(
 // 具体业务服务，非公共服务，需要拿到用户信息
 app.use(currentUser);
 
-// app.use(indexTicketRouter);
-// app.use(createTicketRouter);
-// app.use(showTicketRouter);
-// app.use(updateTicketRouter);
+app.use(indexOrderRouter);
+app.use(createOrderRouter);
+app.use(showOrderRouter);
+app.use(deleteOrderRouter);
 
-app.all('*', async (req, res) => {
+app.all('*', async () => {
   throw new NotFoundError();
 });
 
