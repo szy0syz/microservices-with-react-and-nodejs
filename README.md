@@ -1395,8 +1395,15 @@ tickets-mongo-depl-8448df7874-5kp5k   1/1     Running   0          70m
 
 #### 修复一个测试问题
 
-> 测试环境我们没有 `natsWrapper`
+![136](images/136.png)
 
+![137](images/137.png)
+
+![138](images/138.png)
+
+![139](images/139.png)
+
+> 测试环境我们没有 `natsWrapper`
 
 ```ts
 import request from 'supertest';
@@ -1436,6 +1443,10 @@ export const natsWrapper = {
 ```
 
 - 在使用消息系统时，为了确保消息发送正常，必须用 jest 做一个测试，保证事件消息一定被发出！
+
+### 17 Cross-Service Data Replication In Action
+
+![140](images/140.png)
 
 ---
 
