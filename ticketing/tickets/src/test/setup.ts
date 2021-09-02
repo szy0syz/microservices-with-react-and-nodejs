@@ -6,6 +6,7 @@ declare global {
   var signin: () => any; // Promise<string[]> | string[]
 }
 
+jest.mock('../nats-wrapper');
 
 let mongo: any;
 beforeAll(async () => {
@@ -34,11 +35,10 @@ afterAll(async () => {
   await mongoose.connection.close();
 });
 
-
 global.signin = () => {
   // Build a JWT payload.  { id, email }
   const payload = {
-    id: '1lk24j124l',
+    id: 'user' + Date.now(),
     email: 'test@test.com',
   };
 

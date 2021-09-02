@@ -1393,6 +1393,26 @@ tickets-mongo-depl-8448df7874-5kp5k   1/1     Running   0          70m
 >
 > 还有就是认准一个东西是好的，就一定要一口不剩的全部吃完！😈 😈 😈
 
+#### 修复一个测试问题
+
+> 测试环境我们没有 `natsWrapper`
+
+
+```ts
+import request from 'supertest';
+import { app } from '../../app';
+import { Ticket } from '../../models/ticket';
+
+// 可以单独文件指定，最好在总的文件 setup.ts 中指定
+jest.mock('../../nats-wrapper');
+
+it('has a route handler listening to /api/tickets for post requests', async () => {
+  const response = await request(app).post('/api/tickets').send({});
+
+  expect(response.status).not.toEqual(404);
+});
+```
+
 ---
 
 ### Docker
