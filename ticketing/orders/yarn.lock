@@ -498,10 +498,10 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
-"@js-ticketing/common@1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@js-ticketing/common/-/common-1.0.6.tgz#e83dfef055ba196474920784c17c41ca67df32e8"
-  integrity sha512-4RJIPFs2D088gAT6bEQrzDk9k3cJi83kbZLmFf/CReWcuMP+4el1TUKYte9qI3WRr0KL2+Soq9BfFPMbrZUdLg==
+"@js-ticketing/common@^1.0.6":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@js-ticketing/common/-/common-1.0.7.tgz#03642bc2de403ca7cbef2f71c66b4415a38f584c"
+  integrity sha512-B8p5qGJVxjWo2Jdzo07BfVzd9RXr7WwUJV7RZf3f9UUZMVKpAsFWPcmoHjNPGZS35V+nj/IxZ6vbBx74VVzTGw==
   dependencies:
     "@types/cookie-session" "^2.0.42"
     "@types/express" "^4.17.12"
