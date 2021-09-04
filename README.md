@@ -1504,6 +1504,25 @@ router.post(
 - `Orders-Service` 接到了这个消息，把 `ticket` 实体保存下来，那么价格 `price` 有两份，唯一标识 `_id` 有两份，非常麻烦！
 - 最终我们的在 `Orders-Service` 调整 `ID` 了，也就是从 source 起源地开始，把唯一标识符全部同步一致
 
+#### 测试 orders 和 tickets 之间的通信
+
+```bash
+[tickets] Event published to subject ticket:created
+[orders] Message received: ticket:created / orders-service
+[tickets] Event published to subject ticket:created
+[orders] Message received: ticket:created / orders-service
+[orders] Message received: ticket:created / orders-service
+[tickets] Event published to subject ticket:created
+[tickets] Event published to subject ticket:created
+[orders] Message received: ticket:created / orders-service
+[tickets] Event published to subject ticket:updated
+[orders] Message received: ticket:updated / orders-service
+```
+
+> 也是醉了，竟然收到在发送之前！
+>
+> 太屌了，竟然同步了！
+
 ### Docker
 
 Why use Docker ?
