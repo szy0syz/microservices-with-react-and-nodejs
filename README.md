@@ -1523,6 +1523,24 @@ router.post(
 >
 > 太屌了，竟然同步了！
 
+#### Clear Concurrency Issues
+
+> 搞清楚 “并发问题”
+
+![149](images/149.png)
+
+![150](images/150.png)
+
+- 我们使用如下事务测试：
+  - 1. 创建一个5元ticket
+  - 2. 修改这个ticket的为10元
+  - 3. 再次修改这个ticket的为15元
+- 每次执行压力测试批量执行10000次
+- 结果如下：
+
+![151](images/151.png)
+
+
 ### Docker
 
 Why use Docker ?
