@@ -1502,7 +1502,7 @@ router.post(
 - 在分布式系统了，最啰嗦的就是这个数据一致性问题
 - `Tickets-Service` 有一个原生的 `ticket` 实体，通过 `Message` 传到了 `Orders-Service`
 - `Orders-Service` 接到了这个消息，把 `ticket` 实体保存下来，那么价格 `price` 有两份，唯一标识 `_id` 有两份，非常麻烦！
-- 最终我们的在 `Orders-Service` 调整 `ID` 了
+- 最终我们的在 `Orders-Service` 调整 `ID` 了，也就是从 source 起源地开始，把唯一标识符全部同步一致
 
 ### Docker
 
