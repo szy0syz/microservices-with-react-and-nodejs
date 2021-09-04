@@ -1485,6 +1485,18 @@ router.post(
 
 ---
 
+### 18 Understanding Event Flow
+
+![144](images/144.png)
+
+![145](images/145.png)
+
+### 19 Listening for Events and Handling Concurrency Issues
+
+![146](images/146.png)
+
+![147](images/147.png)
+
 ### Docker
 
 Why use Docker ?
