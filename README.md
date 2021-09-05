@@ -1618,6 +1618,25 @@ it('implements optimistic concurrenty control', async (done) => {
       at fulfilled (src/models/__tests__/ticket.test.ts:5:58)
 ```
 
+#### Who Updates Versions?
+
+- When should we increment or include the 'version' number of a record with an event?
+  - 啥时候我们应该增加或包含 version 版本号在一个事件中呢？
+- Increment/include the 'version' number whenever the primary service responsible for a record emits an event to describe a create/update/destroy to a record
+  - 每当负责记录的 **主要服务** 发出描述创建/更新/销毁记录的事件时，就应增加/包括 "版本 "号
+  - 也就是说只有 record 的源头服务才能发送带有 version 的事件出来，让其他监听它的关联服务做优化并发控制！
+  - 这个数据的源头服务就是指代写入的入口服务！
+  - 一个写，其他的所有都是听。
+  - 对的，就是这样！
+
+我们按原来的 mini-posts 系统举例：
+
+![156](images/156.png)
+
+![157](images/157.png)
+
+- Moderation-Service 无权直接更改 comment 实体，只能通知让 Comments-Service 自己来更新，这样的话，它自己更改了数据就会自己发送 CommentUpdated 事件，这样所有关联服务都会更新，省了一大麻烦 ———— 秒！
+
 ### Docker
 
 Why use Docker ?
