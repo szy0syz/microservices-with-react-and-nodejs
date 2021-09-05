@@ -1559,7 +1559,7 @@ router.post(
 > 屌到没朋友
 
 ```ts
-it('implements optimistic concurrenty control', async () => {
+it('implements optimistic concurrenty control', async (done) => {
   // Create an instance of a ticket
   const ticket = Ticket.build({
     title: 'concert',
@@ -1583,6 +1583,17 @@ it('implements optimistic concurrenty control', async () => {
 
   // Save the second fetch ticket and expect an error
   await secondInstance?.save();
+
+  try {
+    await secondInstance?.save();
+  } catch (error) {
+    return done();
+  }
+  throw new Error('Should not reach this point');
+
+  // expect(async () => {
+  //   await secondInstance?.save();
+  // }).toThrow();
 });
 ```
 
