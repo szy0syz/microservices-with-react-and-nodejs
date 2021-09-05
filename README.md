@@ -1746,6 +1746,26 @@ $ node batch-test.js
 - 我们就是为了测试版本原本执行是 A-1、2、3，B-1、2、3，C-1、2、3 (数字代表version)
 - 但现在同时400并发的请求过来，A的1、2、3，能会被C的1的乱，不在按顺序了，所以我们现在到数据库检查下结果
 
+```bash
+k get pods
+k exec -it orders-mongo-depl-69b8b978b7-jkwx4 sh
+k exec -it tickets-mongo-depl-69c59bc4f7-255r6 sh
+
+use tickets
+use orders
+
+db.tickets.remove({})
+db.tickets.remove({})
+
+# 跑并发脚本
+
+db.tickets.find({price: 15}).length()
+# 400
+
+db.tickets.find({price: 15}).length()
+# 400，两个服务中的数据一致性完全一样
+# 但要注意，`console` 会报 `ticket not found` 的错误，但 `NATS` 会处理
+```
 
 ### Docker
 
