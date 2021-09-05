@@ -1645,6 +1645,108 @@ Time:        11.871 s
 Ran all test suites.
 ```
 
+#### test Version Query
+
+> 非常关键，必须要测试好！
+>
+> 批量走起！！
+
+```js
+const axios = require('axios');
+const https = require('https');
+
+const instance = axios.create({
+  httpsAgent: new https.Agent({
+    rejectUnauthorized: false,
+  }),
+});
+
+const cookie =
+  'express:sess=eyJqd3QiOiJleUpoYkdjaU9pSklVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKcFpDSTZJall4TXpSak9UVTNaR1F6Tmpnd01EQXhPV05rTlRoa01DSXNJbVZ0WVdsc0lqb2lNVEl6UURFeU15NWpiMjBpTENKcFlYUWlPakUyTXpBNE5EazVOekY5Lk5seTQxSmRneENRR2hLMldHVTZSTVo0emtzT2gtV0xFZEZodWczOHEtbDgifQ==';
+
+const doRequest = async (index) => {
+  const { data } = await instance.post(
+    `https://ticketing.dev/api/tickets`,
+    {
+      title: 'ticket',
+      price: 5,
+    },
+    {
+      headers: { cookie },
+    }
+  );
+
+  await instance.put(
+    `https://ticketing.dev/api/tickets/${data.id}`,
+    {
+      title: 'ticket',
+      price: 10,
+    },
+    {
+      headers: { cookie },
+    }
+  );
+
+  await instance.put(
+    `https://ticketing.dev/api/tickets/${data.id}`,
+    {
+      title: 'ticket',
+      price: 15,
+    },
+    {
+      headers: { cookie },
+    }
+  );
+
+  console.log(`[${index}] - Request complete.`);
+};
+
+(async () => {
+  for (let i = 0; i < 400; i++) {
+    doRequest(i);
+  }
+})();
+```
+
+```bash
+$ node batch-test.js
+[16] - Request complete.
+[123] - Request complete.
+[5] - Request complete.
+[13] - Request complete.
+[2] - Request complete.
+[20] - Request complete.
+[21] - Request complete.
+[6] - Request complete.
+[18] - Request complete.
+[12] - Request complete.
+[7] - Request complete.
+[1] - Request complete.
+[0] - Request complete.
+[15] - Request complete.
+[19] - Request complete.
+[4] - Request complete.
+[43] - Request complete.
+[50] - Request complete.
+[51] - Request complete.
+[52] - Request complete.
+[30] - Request complete.
+[34] - Request complete.
+[10] - Request complete.
+[26] - Request complete.
+[56] - Request complete.
+[64] - Request complete.
+[66] - Request complete.
+[69] - Request complete.
+[70] - Request complete.
+```
+
+- console 的第一个框表示请求序号
+- 看到没有，程序发出的请求序号是一定按顺序的，但返回已经乱序了！
+- 我们就是为了测试版本原本执行是 A-1、2、3，B-1、2、3，C-1、2、3 (数字代表version)
+- 但现在同时400并发的请求过来，A的1、2、3，能会被C的1的乱，不在按顺序了，所以我们现在到数据库检查下结果
+
+
 ### Docker
 
 Why use Docker ?

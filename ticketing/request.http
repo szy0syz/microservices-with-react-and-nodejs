@@ -26,20 +26,20 @@ POST https://ticketing.dev/api/tickets
 Content-Type: application/json
 
 {
-  "title": "ticket-4",
-  "price": 40
+  "title": "ticket-1",
+  "price": 10
 }
 
 ### fetch tickets
 GET https://ticketing.dev/api/tickets
 
 ### update a ticket
-PUT https://ticketing.dev/api/tickets/6133894855ff8c001ab67df8
+PUT https://ticketing.dev/api/tickets/6134c9e5d37b3b0019409a65
 Content-Type: application/json
 
 {
-  "title": "ticket-4-m2",
-  "price": 42
+  "title": "ticket-2-m2",
+  "price": 22
 }
 
 
@@ -55,5 +55,5 @@ POST https://ticketing.dev/api/orders
 Content-Type: application/json
 
 {
-  "ticketId": "6133894855ff8c001ab67df8"
+  "ticketId": "6134c9e5d37b3b0019409a65"
 }
