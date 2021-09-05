@@ -34,7 +34,7 @@ Content-Type: application/json
 GET https://ticketing.dev/api/tickets
 
 ### update a ticket
-PUT https://ticketing.dev/api/tickets/6134c9e5d37b3b0019409a65
+PUT https://ticketing.dev/api/tickets/6134d3e4535a6a00199ff66f
 Content-Type: application/json
 
 {
@@ -55,5 +55,5 @@ POST https://ticketing.dev/api/orders
 Content-Type: application/json
 
 {
-  "ticketId": "6134c9e5d37b3b0019409a65"
+  "ticketId": "6134d3e4535a6a00199ff66f"
 }
