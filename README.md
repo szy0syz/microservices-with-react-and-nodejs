@@ -1282,7 +1282,7 @@ process.on('SIGNTERM', () => stan.close());
 
 The Listener Abstract Class -> 👍🏻
 
-> 代码的优美
+> 优美的代码
 
 ```ts
 abstract class Listener {
@@ -1635,7 +1635,15 @@ it('implements optimistic concurrenty control', async (done) => {
 
 ![157](images/157.png)
 
-- Moderation-Service 无权直接更改 comment 实体，只能通知让 Comments-Service 自己来更新，这样的话，它自己更改了数据就会自己发送 CommentUpdated 事件，这样所有关联服务都会更新，省了一大麻烦 ———— 秒！
+- Moderation-Service 无权直接更改 comment 实体，只能通知让 Comments-Service 自己来更新，这样的话，它自己更改了数据就会自己发送 CommentUpdated 事件，这样所有关联服务都会更新，省了一大麻烦 ——— 妙哉！
+
+```bash
+Test Suites: 5 passed, 5 total
+Tests:       18 passed, 18 total
+Snapshots:   0 total
+Time:        11.871 s
+Ran all test suites.
+```
 
 ### Docker
 
