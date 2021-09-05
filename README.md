@@ -1554,6 +1554,59 @@ router.post(
 
 > 从👆🏻上面的图可以看出来，我们在更新完某个资源后，要 await 它并把更新后的 version 字段和唯一键 ID 发送给消息中心，告诉它：我要更新 `ID=CQZ and version=1` 的某个资源！
 
+#### OCC 优化并发控制的单元测试
+
+> 屌到没朋友
+
+```ts
+it('implements optimistic concurrenty control', async () => {
+  // Create an instance of a ticket
+  const ticket = Ticket.build({
+    title: 'concert',
+    price: 5,
+    userId: '123',
+  });
+
+  // Save the ticket to the database
+  await ticket.save();
+
+  // Fetch the ticket twice
+  const firstInstance = await Ticket.findById(ticket.id);
+  const secondInstance = await Ticket.findById(ticket.id);
+
+  // Make two separate changes to the ticket we fetched
+  firstInstance?.set({ price: 10 });
+  secondInstance?.set({ price: 15 });
+
+  // Save the first fetched ticket
+  await firstInstance?.save();
+
+  // Save the second fetch ticket and expect an error
+  await secondInstance?.save();
+});
+```
+
+```bash
+ FAIL  src/models/__tests__/ticket.test.ts (10.893 s)
+  ● implements optimistic concurrenty control
+
+    VersionError: No matching document found for id "61343baa7437340cfd01b2f8" version 0 modifiedPaths "price"
+
+      24 |
+      25 |   // Save the second fetch ticket and expect an error
+    > 26 |   await secondInstance?.save();
+         |                         ^
+      27 | });
+      28 |
+
+      at generateVersionError (node_modules/mongoose/lib/model.js:444:10)
+      at model.Object.<anonymous>.Model.save (node_modules/mongoose/lib/model.js:500:28)
+      at src/models/__tests__/ticket.test.ts:26:25
+      at step (src/models/__tests__/ticket.test.ts:33:23)
+      at Object.next (src/models/__tests__/ticket.test.ts:14:53)
+      at fulfilled (src/models/__tests__/ticket.test.ts:5:58)
+```
+
 ### Docker
 
 Why use Docker ?
