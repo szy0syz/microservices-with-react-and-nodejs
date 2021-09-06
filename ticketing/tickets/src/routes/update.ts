@@ -1,4 +1,4 @@
-import { BadRequestError } from './../../../auth/src/errors/bad-request-error';
+import { BadRequestError } from '@js-ticketing/common';
 import { natsWrapper } from './../nats-wrapper';
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';

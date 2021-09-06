@@ -1835,6 +1835,19 @@ Next Couple Videos
 
 > 幽默：expiration-depl 和 expiration-redis-depl 一起部署，有种坏的情况是，expiration-depl 连不到一起启动的 redis ，这时暂时杀死 expiration-depl 重启即可连接 redis ！
 
+```bash
+[orders] Message received: ticket:created / orders-service
+[tickets] Event published to subject ticket:created
+[tickets] Message received: order:created / tickets-server
+[orders] Event published to subject order:created
+[expiration] Message received: order:created / expiration-service
+[expiration] I want to publish an expiration:complete event for OrderId 6136393432febc0018df3135
+[orders] Message received: ticket:updated / orders-service
+[tickets] Event published to subject ticket:updated
+```
+
+> ↑ 这些服务真是可爱的令人泪流满面！
+
 ### Docker
 
 Why use Docker ?
