@@ -1767,6 +1767,19 @@ db.tickets.find({price: 15}).length()
 # 但要注意，`console` 会报 `ticket not found` 的错误，但 `NATS` 会处理
 ```
 
+Next Couple Videos
+
+- Add the 'mongoose-update-if-current' module into the Orders model
+- Fix up some tests - we are createing some Tickets in service without providing them an ID
+- Fix up some route handler - we are publishing events around orders but not providing the version of the order
+
+记录下 orders-model 增加OCC
+
+- `model` 文件增加 `updateIfCurrentPlugin` 并使用
+- `orderSchema.set('versionKey', 'version');`
+- 在 `OrderDoc` 下新增 `version` 字段
+- 不需要在 `OrderAttrs` 增加
+
 ### Docker
 
 Why use Docker ?
