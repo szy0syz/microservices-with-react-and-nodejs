@@ -1833,6 +1833,8 @@ Next Couple Videos
 
 ![169](images/169.png)
 
+> 幽默：expiration-depl 和 expiration-redis-depl 一起部署，有种坏的情况是，expiration-depl 连不到一起启动的 redis ，这时暂时杀死 expiration-depl 重启即可连接 redis ！
+
 ### Docker
 
 Why use Docker ?
