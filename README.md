@@ -1792,9 +1792,9 @@ Next Couple Videos
 
 #### Missing Update Event
 
-![161](images/161.png)
+![161](images/161.jpg)
 
-![162](images/162.png)
+![162](images/162.jpg)
 
 - 在 `Tickets-Service` 中，别忘记了在顶层初始化 `listener`实例
 - 这样就能直接使用 `this.client` ，等等不对啊！？
