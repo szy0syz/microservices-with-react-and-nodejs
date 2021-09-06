@@ -1807,6 +1807,24 @@ Next Couple Videos
 
 ![163](images/163.png)
 
+![164](images/164.png)
+
+![165](images/165.png)
+
+![166](images/166.png)
+
+#### 如何新建一个服务
+
+- 复制其他服务的如下文件到其根目录
+  - `.dockerignore`
+  - `Dockerfile`
+  - `package.json`
+  - `tsconfig.json`
+- 再复制如下文件到 `/src/`
+  - `index.ts`
+  - `nats-wrapper.ts`
+  - `__mocks__`
+
 ### Docker
 
 Why use Docker ?
