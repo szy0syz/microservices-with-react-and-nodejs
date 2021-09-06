@@ -1825,6 +1825,14 @@ Next Couple Videos
   - `nats-wrapper.ts`
   - `__mocks__`
 
+#### 到底 bull 是个什么？
+
+![167](images/167.png)
+
+![168](images/168.png)
+
+![169](images/169.png)
+
 ### Docker
 
 Why use Docker ?
