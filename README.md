@@ -1852,6 +1852,29 @@ Next Couple Videos
 
 原来接手的一个项目，使用单体应用来写，就有类似海量1、2、3、4、5、6、7、8、9分量子任务叠加，最后再加 `avi转mp4` 的巨耗资源的需求，写到最后代码无法修复，且极容易 **“爆”**，当时要是知道现在 “这条路” 就真的太好了！
 
+#### Delaying Job Processing
+
+```ts
+export class ORderCreatedListener extends Listener<OrderCreatedEvent> {
+  readonly subject = Subjects.OrderCreated;
+  queueGroupName = queueGroupname;
+
+  async onMessage(data: OrderCreatedEvent['data'], msg: Message) {
+
+    await expirationQueue.add(
+      {
+        orderId: data.id,
+      },
+      {
+        delay: 10000,
+      }
+    );
+
+    msg.ack();
+  }
+}
+```
+
 ### Docker
 
 Why use Docker ?
