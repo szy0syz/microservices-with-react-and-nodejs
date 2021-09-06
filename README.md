@@ -1796,6 +1796,13 @@ Next Couple Videos
 
 ![162](images/162.png)
 
+- 在 `Tickets-Service` 中，别忘记了在顶层初始化 `listener`实例
+- 这样就能直接使用 `this.client` ，等等不对啊！？
+
+#### Rejecting Edits of Reserved Tickets
+
+只要 ticket 实体已经写入了 orderId 字段后，就不让再次编辑了。
+
 ### Docker
 
 Why use Docker ?
