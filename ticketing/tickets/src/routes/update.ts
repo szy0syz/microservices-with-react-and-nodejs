@@ -8,7 +8,7 @@ import {
   NotAuthorizedError,
 } from '@js-ticketing/common';
 import { Ticket } from '../models/ticket';
-import { TicketUpdatedPublisher } from '../events/publisher/ticket-update-publisher'
+import { TicketUpdatedPublisher } from '../events/publishers/ticket-update-publisher'
 
 const router = express.Router();
 

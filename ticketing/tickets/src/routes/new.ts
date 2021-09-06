@@ -3,7 +3,7 @@ import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import { requireAuth, validateRequest } from '@js-ticketing/common';
 import { Ticket } from '../models/ticket';
-import { TicketCreatedPublisher } from '../events/publisher/ticket-created-publisher';
+import { TicketCreatedPublisher } from '../events/publishers/ticket-created-publisher';
 
 const router = express.Router();
 

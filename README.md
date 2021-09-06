@@ -1780,6 +1780,16 @@ Next Couple Videos
 - 在 `OrderDoc` 下新增 `version` 字段
 - 不需要在 `OrderAttrs` 增加
 
+#### Strategies for Locking a Ticket
+
+> 票据的锁定策略
+
+![158](images/158.png)
+
+![159](images/159.png)
+
+![160](images/160.png)
+
 ### Docker
 
 Why use Docker ?
