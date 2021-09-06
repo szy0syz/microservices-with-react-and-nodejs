@@ -499,9 +499,9 @@
     chalk "^4.0.0"
 
 "@js-ticketing/common@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@js-ticketing/common/-/common-1.0.9.tgz#1aa3a2187e7da655233bbe6f85ff4775df0d5666"
-  integrity sha512-y3pKADBh35Nh4hDgo65zIDgNH8ec/3H0UP34BnYO1jVt6AJqpdgQ92OfT1BjsZeJ0TFczOCyhVsrBL8CIenuqg==
+  version "1.0.11"
+  resolved "https://registry.npmjs.org/@js-ticketing/common/-/common-1.0.11.tgz#96d83568f75af4184b4086bfec8f0a36e11b8d8c"
+  integrity sha512-xgQhsJvCAcAa95ZlpLLKuEdXeSMh68KT3l3qwofPfx9yuGjR4s3w37VuNY8VdV8hxsBkThGK6BXyfM1X7CjM0Q==
   dependencies:
     "@types/cookie-session" "^2.0.42"
     "@types/express" "^4.17.12"
@@ -2592,7 +2592,7 @@ lodash.once@^4.0.0:
 
 lodash@4.x, lodash@^4.17.21, lodash@^4.7.0:
   version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 lru-cache@^6.0.0:
@@ -3709,7 +3709,7 @@ v8-to-istanbul@^8.0.0:
 
 validator@^13.5.2:
   version "13.6.0"
-  resolved "https://registry.yarnpkg.com/validator/-/validator-13.6.0.tgz#1e71899c14cdc7b2068463cb24c1cc16f6ec7059"
+  resolved "https://registry.npmjs.org/validator/-/validator-13.6.0.tgz#1e71899c14cdc7b2068463cb24c1cc16f6ec7059"
   integrity sha512-gVgKbdbHgtxpRyR8K0O6oFZPhhB5tT1jeEHZR0Znr9Svg03U0+r9DXWMrnRAB+HtCStDQKlaIZm42tVsVjqtjg==
 
 vary@~1.1.2:
