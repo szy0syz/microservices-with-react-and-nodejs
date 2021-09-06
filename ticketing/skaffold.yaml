@@ -40,3 +40,11 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: registry.cn-shenzhen.aliyuncs.com/444/ticketing-expiration
+      context: expiration
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
