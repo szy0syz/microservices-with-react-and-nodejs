@@ -1790,6 +1790,12 @@ Next Couple Videos
 
 ![160](images/160.png)
 
+#### Missing Update Event
+
+![161](images/161.png)
+
+![162](images/162.png)
+
 ### Docker
 
 Why use Docker ?
