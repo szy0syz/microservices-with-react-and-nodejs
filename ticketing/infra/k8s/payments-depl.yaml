@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payment-depl
+  name: payments-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: payment
+      app: payments
   template:
     metadata:
       labels:
-        app: payment
+        app: payments
     spec:
       containers:
-        - name: payment
-          image: registry.cn-shenzhen.aliyuncs.com/444/ticketing-payment
+        - name: payments
+          image: registry.cn-shenzhen.aliyuncs.com/444/ticketing-payments
           env:
             - name: NATS_CLIENT_ID
               valueFrom:
@@ -25,7 +25,7 @@ spec:
             - name: NATS_CLUSTER_ID
               value: ticketing
             - name: MONGO_URI
-              value: 'mongodb://payment-mongo-srv:27017/payment'
+              value: 'mongodb://payments-mongo-srv:27017/payments'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
@@ -35,12 +35,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: payment-srv
+  name: payments-srv
 spec:
   selector:
-    app: payment
+    app: payments
   ports:
-    - name: payment
+    - name: payments
       protocol: TCP
       port: 3000
       targetPort: 3000
