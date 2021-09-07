@@ -2012,6 +2012,18 @@ it('ack the message', async () => {
 
 ![175](images/175.png)
 
+创建一个 `payments-service` 里的 `model`
+
+```ts
+import mongoose from 'mongoose';
+
+interface OrderAttrs {}
+
+interface OrderDoc extends mongoose.Document {}
+
+interface OrderModel extends mongoose.Model<OrderDoc> {}
+```
+
 ### Docker
 
 Why use Docker ?
