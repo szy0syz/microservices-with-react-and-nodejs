@@ -1913,6 +1913,8 @@ export class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent
 
 - 首先在 `setup` 里准备好数据和函数，因为每个 `it` 断言都是独立的作用域，相互不影响
 
+- 测试 ExpirationCompleteListener 类的 onMessage 方法会不会修改订单状态为 “取消”
+
 ```ts
 it('updates the order status to cancelled', async () => {
   const { listener, order, data, msg } = await setup();
