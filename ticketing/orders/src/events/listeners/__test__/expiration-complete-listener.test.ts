@@ -54,13 +54,18 @@ it('updates the order status to cancelled', async () => {
 it('emit an OrderCancelled event', async () => {
   const { listener, order, data, msg } = await setup();
 
+  // 📢 注意：只要一 await 就相当于发送事件出去了
+  // 但是假的 nats 在处理事件
   await listener.onMessage(data, msg);
 
+  // 确认下到底调用了 publish 方法没
   expect(natsWrapper.client.publish).toHaveBeenCalled();
 
+  // 确认下调用 publish 方法时传递的参数是否正确
   const eventData = JSON.parse(
     (natsWrapper.client.publish as jest.Mock).mock.calls[0][1]
   );
+
   expect(eventData.id).toEqual(order.id);
 });
 
