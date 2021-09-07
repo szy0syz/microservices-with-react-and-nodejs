@@ -1909,6 +1909,25 @@ export class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent
 }
 ```
 
+#### 如何测试 expiration-complete-listener.test
+
+- 首先在 `setup` 里准备好数据和函数，因为每个 `it` 断言都是独立的作用域，相互不影响
+
+```ts
+it('updates the order status to cancelled', async () => {
+  const { listener, order, data, msg } = await setup();
+
+  // 这里 data 是手动准备的 刚刚创建的订单数据
+  // 我们测的就是 ExpirationCompleteListener 的 onMessage 方法
+  // 对，是一个黑盒测试法！
+  // 这个方法里 “一定会去数据库里改订单状态，并且调用msg.ack()”
+  await listener.onMessage(data, msg);
+
+  const updatedOrder = await Order.findById(order.id);
+  expect(updatedOrder!.status).toEqual(OrderStatus.Cancelled);
+});
+```
+
 ### Docker
 
 Why use Docker ?
