@@ -1875,6 +1875,40 @@ export class ORderCreatedListener extends Listener<OrderCreatedEvent> {
 }
 ```
 
+#### 如何处理 Expiration Event 和 Order Cancelled Event ？
+
+```ts
+export class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent> {
+  readonly subject = Subjects.ExpirationComplete;
+  queueGroupName = queueGroupName;
+
+  async onMessage(data: ExpirationCompleteEvent['data'], msg: Message) {
+    const order = await Order.findById(data.orderId).populate('ticket');
+
+    if (!order) {
+      throw new Error('Order not found');
+    }
+
+    //! 千万不能在这里直接设置 ticket: null ，因为有OCC，我们需要加 version !!
+    //! 况且这里加了好比我们一个事件处理了两个任务，这个也是违背了我们设计原则的 !!
+    //! 也就是说，订到到期和订单取消，必须走两个事件 !!
+    //  order.set({ ticket: null, status: OrderStatus.Cancelled });
+    order.set({ status: OrderStatus.Cancelled });
+    await order.save();
+
+    await new OrderCancelledPublisher(this.client).publish({
+      id: order.id,
+      version: order.version,
+      ticket: {
+        id: order.ticket.id,
+      },
+    });
+
+    msg.ack();
+  }
+}
+```
+
 ### Docker
 
 Why use Docker ?
