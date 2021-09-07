@@ -1992,6 +1992,20 @@ it('ack the message', async () => {
 
 #### initial Payment Service
 
+> 改服务是个包含 `http` ，要加 `express` ，后面我自己改成 `nestjs` 😂
+
+- root下
+  - `.dockerignore`
+  - `Dockerfile`
+  - `package.json`
+  - `tsconfig.json`
+- src下
+  - `__mocks__`
+  - `test`
+  - `app.ts`
+  - `index.ts`
+  - `nats-wrapper.ts`
+
 ### Docker
 
 Why use Docker ?
