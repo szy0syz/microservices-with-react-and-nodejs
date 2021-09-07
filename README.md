@@ -1947,9 +1947,26 @@ it('emit an OrderCancelled event', async () => {
   const eventData = JSON.parse(
     (natsWrapper.client.publish as jest.Mock).mock.calls[0][1]
   );
+  // 有必要看看为啥子上面这个转换可以执行！！看下面！
 
   expect(eventData.id).toEqual(order.id);
 });
+```
+
+// 为什么 publish 方法可以这样搞，因为做了劫持注入，看下面！
+
+```ts
+export const natsWrapper = {
+  client: {
+    publish: jest
+      .fn()
+      .mockImplementation(
+        (subject: string, data: string, callback: () => void) => {
+          callback();
+        }
+      ),
+  },
+};
 ```
 
 - 最后就简单了，测试下是否执行了消息回执
