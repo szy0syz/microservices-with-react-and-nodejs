@@ -2041,6 +2041,23 @@ interface OrderModel extends mongoose.Model<OrderDoc> {}
 
 ![180](images/180.png)
 
+![181](images/181.png)
+
+![182](images/182.png)
+
+```ts
+const AppComponent = ({ Component, pageProps, currentUser }) => {
+  return (
+    <div>
+      <Header currentUser={currentUser} />
+      <Component {...pageProps} currentUser={currentUser} />
+    </div>
+  );
+};
+```
+
+这个 `SSR` `bug` 我竟然在 `200` 来集的时候就修复了 `470` 集的 `bug` 😂
+
 ### Docker
 
 Why use Docker ?
