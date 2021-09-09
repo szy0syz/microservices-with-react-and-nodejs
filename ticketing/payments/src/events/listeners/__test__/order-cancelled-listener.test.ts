@@ -13,7 +13,7 @@ const setup = async () => {
     status: OrderStatus.Created,
     price: 10,
     userId: 'asldkfj',
-    version: 0, // is created
+    version: 0,
   });
   await order.save();
 

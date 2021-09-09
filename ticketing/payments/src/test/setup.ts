@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 
 declare global {
-  var signin: (id?: string) => any; // Promise<string[]> | string[]
+  var signin: (id?: string) => any;
 }
 
 jest.mock('../nats-wrapper');
