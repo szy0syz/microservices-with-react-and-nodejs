@@ -689,6 +689,11 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-16.7.11.tgz#5877b3ab359af251fd413517be2d4265b7fea9a9"
   integrity sha512-OtOGO+DYmNNqJQG9HG4e5a6iqoRcNfdCf4ha3div7XF5w/uOa3YVpb5aRGClwSDKLmfOysv2hFIvoklffnQi4w==
 
+"@types/node@>=8.1.0":
+  version "16.9.0"
+  resolved "https://registry.npmjs.org/@types/node/-/node-16.9.0.tgz#d9512fe037472dcb58931ce19f837348db828a62"
+  integrity sha512-nmP+VR4oT0pJUPFbKE4SXj3Yb4Q/kz3M9dSAO1GGMebRKWHQxLfDNmU/yh3xxCJha3N60nQ/JwXWwOE/ZSEVag==
+
 "@types/prettier@^2.1.5":
   version "2.3.2"
   resolved "https://registry.npmjs.org/@types/prettier/-/prettier-2.3.2.tgz#fc8c2825e4ed2142473b4a81064e6e081463d1b3"
@@ -3109,7 +3114,7 @@ qs@6.7.0:
   resolved "https://registry.npmjs.org/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
-qs@^6.9.4:
+qs@^6.6.0, qs@^6.9.4:
   version "6.10.1"
   resolved "https://registry.npmjs.org/qs/-/qs-6.10.1.tgz#4931482fa8d647a5aab799c5271d2133b981fb6a"
   integrity sha512-M528Hph6wsSVOBiYUnGf+K/7w0hNshs/duGsNXPUCLH5XAqjEtiPGwNONLV0tBH8NoGb0mvD5JubnUTrujKDTg==
@@ -3449,6 +3454,14 @@ strip-json-comments@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
+
+stripe@^8.174.0:
+  version "8.174.0"
+  resolved "https://registry.npmjs.org/stripe/-/stripe-8.174.0.tgz#91d2e61b0217b1ee9fde2842582e0f1cf1dddc94"
+  integrity sha512-UFU5TuYH7XwUmSllUIcIKhhsvvhhjw9D6ZwVdfB74wU4VOOaWBiQqszkw6chaEFpdulUmbcAH5eZltV3HwOi7g==
+  dependencies:
+    "@types/node" ">=8.1.0"
+    qs "^6.6.0"
 
 superagent@^6.1.0:
   version "6.1.0"
