@@ -2058,6 +2058,12 @@ const AppComponent = ({ Component, pageProps, currentUser }) => {
 
 这个 `SSR` `bug` 我竟然在 `200` 来集的时候就修复了 `470` 集的 `bug` 😂
 
+### 23 CI/CD
+
+![183](images/183.png)
+
+![184](images/184.png)
+
 ### Docker
 
 Why use Docker ?
