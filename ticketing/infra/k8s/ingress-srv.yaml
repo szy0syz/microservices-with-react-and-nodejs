@@ -26,3 +26,7 @@ spec:
             backend:
               serviceName: client-srv
               servicePort: 3000
+          - path: /api/payments/?(.*)
+            backend:
+              serviceName: payments-srv
+              servicePort: 3000

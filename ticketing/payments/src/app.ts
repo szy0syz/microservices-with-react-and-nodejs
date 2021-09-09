@@ -3,6 +3,7 @@ import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 import express from 'express';
 import 'express-async-errors';
+import { createChargeRouter } from './routes/new';
 
 const app = express();
 app.set('trust proxy', true);
@@ -14,8 +15,9 @@ app.use(
   })
 );
 
-// 具体业务服务，非公共服务，需要拿到用户信息
 app.use(currentUser);
+
+app.use(createChargeRouter);
 
 app.all('*', async (req, res) => {
   throw new NotFoundError();
