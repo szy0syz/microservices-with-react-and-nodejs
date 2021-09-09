@@ -2033,6 +2033,10 @@ interface OrderModel extends mongoose.Model<OrderDoc> {}
 - `k create secret generic stripe-secret --from-literal STRIPE_KEY=sk_test_......`
 - `k get secrets`
 
+![178](images/178.png)
+
+![179](images/179.png)
+
 ### Docker
 
 Why use Docker ?
