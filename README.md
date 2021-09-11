@@ -2072,6 +2072,54 @@ const AppComponent = ({ Component, pageProps, currentUser }) => {
 
 ![188](images/188.png)
 
+#### doctl
+
+- Authenticating with Doctl
+  - `doctl auth init`
+- Get connection info for our new cluster
+  - `doctl kubernetes cluster kubeconfig save <cluster_name>`
+- List all contexts
+  - `kubectl config view`
+- Use a different context
+  - `kubectl config use-context <context_name>`
+
+```bash
+$ doctl kubernetes cluster kubeconfig save ticketing
+Notice: Adding cluster credentials to kubeconfig file found in "/Users/szy0syz/.kube/config"
+Notice: Setting current-context to do-sfo3-ticketing
+
+$ k get pods
+No resources found in default namespace.
+
+$ k get nodes
+NAME                   STATUS   ROLES    AGE    VERSION
+pool-3iqacsy0l-81vba   Ready    <none>   2m8s   v1.21.3
+pool-3iqacsy0l-81vbe   Ready    <none>   99s    v1.21.3
+pool-3iqacsy0l-81vbg   Ready    <none>   119s   v1.21.3
+
+contexts:
+- context:
+    cluster: do-sfo3-ticketing
+    user: do-sfo3-ticketing-admin
+  name: do-sfo3-ticketing
+- context:
+    cluster: docker-desktop
+    user: docker-desktop
+  name: docker-desktop
+- context:
+    cluster: minikube
+    extensions:
+    - extension:
+        last-update: Mon, 06 Sep 2021 23:23:04 CST
+        provider: minikube.sigs.k8s.io
+        version: v1.18.1
+      name: context_info
+    namespace: default
+    user: minikube
+  name: minikube
+current-context: do-sfo3-ticketing
+```
+
 ### Docker
 
 Why use Docker ?
