@@ -1,6 +1,8 @@
 # microservices-with-react-and-nodejs
 
 > Build, deploy, and scale a Microservices built with Node, React, Docker and Kubernetes.
+>
+> 竟然不知不觉跟完了快600接课，收获颇丰。
 
 ## Menu
 
